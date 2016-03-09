@@ -12,7 +12,10 @@
 !/log/.keep
 /tmp
 
+/config/db_local.yml
+
 # Ignore IDE settings and hidden
 /.idea
 .*
 !/.gitignore
+!/.ruby-version

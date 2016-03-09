@@ -52,3 +52,7 @@ production:
   database: themech_production
   username: themech
   password: <%= ENV['THEMECH_DATABASE_PASSWORD'] %>
+
+# Own local db_config
+<%= file = File.join('config', 'db_local.yml');
+  IO.read(file) if File.exist?(file) %>
