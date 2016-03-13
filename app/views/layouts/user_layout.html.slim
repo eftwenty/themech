@@ -1,10 +1,12 @@
 doctype html
 html
-head
-  title The Mech
-  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-  = javascript_include_tag 'application', 'data-turbolinks-track' => true
-  = csrf_meta_tags
-body
-  p User UI
-  = yield
+  head
+    title #{@title}
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body.nav-sm
+    = render 'layouts/user_header'
+    .container
+      = yield
+    = render 'layouts/user_footer'
