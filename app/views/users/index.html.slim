@@ -1,0 +1,5 @@
+.nav
+  - if @users
+    - @users.each do |user|
+      div
+        = link_to "#{user.first_name}", user

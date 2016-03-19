@@ -3,18 +3,33 @@ class UsersController < ApplicationController
 
   def index
     @title = 'Users'
+
+    @users = User.all
+  end
+
+  def show
+    @title = 'The title'
+    @user = User.find(params[:id])
   end
 
   def new
-    @user = User.new params[:user_params]
+    @title = 'Create the User'
+    @user = User.new
+  end
+
+  def create
+    @user = User.new user_params
+
+    if @user.save
+      redirect_to(users_path, notice: t('notifications.users.successful_creation'))
+    else
+      render 'users/new'
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(
-        :first_name,
-        :last_name
-    )
+    params.require(:user).permit(:first_name, :last_name)
   end
 end

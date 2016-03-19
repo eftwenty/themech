@@ -14,3 +14,21 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "fonts";
+
+body {
+  font-size: 16px;
+  font-family: 'josefin', sans-serif;
+}
+
+.main-header, .main-footer {
+  padding: 15px 10px;
+  width: 100%;
+  background-color: #77f47f;
+}
+
+.main-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

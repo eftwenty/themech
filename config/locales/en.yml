@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+  notifications:
+    users:
+      successful_creation: "Great! The user was created successfully."
