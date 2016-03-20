@@ -1,8 +1,8 @@
 .col-md-4.col-sm-6.col-xs-12
-  .ibox
-    h3 Create the User
-    = simple_form_for @user do |f|
-      .form-group
-        = f.input :first_name, class: 'form-control'
-        = f.input :last_name, class: 'form-control'
-        = f.button :submit, class: 'btn btn-primary pull-right'
+  .page-header
+    h1 New User
+  = simple_form_for @user do |f|
+    .form-group
+      = f.input :first_name, class: 'form-control'
+      = f.input :last_name, class: 'form-control'
+      = f.button :submit, class: 'btn btn-primary pull-right'

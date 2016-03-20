@@ -11,6 +11,12 @@ gem 'sass-rails', '~> 5.0'
 gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 
+# Datatables
+gem 'jquery-datatables-rails', '~> 3.3.0'
+
+# Decorators
+gem 'draper', '~> 1.3'
+
 # Form builder
 gem 'simple_form'
 

@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to(users_path, notice: t('notifications.users.successful_creation'))
     else
-      render 'users/new'
+      render action: :new
     end
   end
 

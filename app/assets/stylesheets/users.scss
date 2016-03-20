@@ -1,3 +1,44 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navbar-custom {
+  width: 100%;
+  border-radius: inherit;
+  background-color: #2A3F54;
+  color: #fff;
+  border: none;
+}
+
+@media (min-width: 768px) {
+  .navbar-custom .navbar-brand {
+    padding: 10px 10px;
+  }
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
+.navbar.navbar-custom > .container-fluid > ul.nav.navbar-nav > li > a {
+  color: #fff;
+}
+
+.navbar.navbar-custom > .container-fluid > ul.nav.navbar-nav > li > a:hover,
+.navbar.navbar-custom > .container-fluid > ul.nav.navbar-nav > li > a:focus {
+  background-color: #425f7c;
+}
+
+.main-footer {
+  padding: 15px 10px;
+  width: 100%;
+  background-color: #2A3F54;
+  color: #fff;
+}
+
+.main-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
