@@ -1,2 +1,6 @@
 .main-footer
-  .text-center Here will be the footer
+  .text-center
+    .pull-right
+      ' eftwenty. 2015
+      - if Date.current.year != 2015
+        span - #{Date.current.year}
