@@ -1,15 +1,14 @@
 doctype html
 html
   head
-    title #{@title}
     = favicon_link_tag 'logo-black.png'
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body.nav-sm
-    = render 'layouts/flash'
     = render 'layouts/user_header'
     .container
+      = render 'layouts/flash'
       = yield
     = render 'layouts/user_footer'

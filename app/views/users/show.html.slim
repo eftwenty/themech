@@ -1,3 +1,18 @@
-.nav
-  div #{@user.first_name}
-  div #{@user.last_name}
+.page-header
+  h1> User Profile
+  i.small
+    = link_to 'Edit', edit_user_path(@user)
+.content
+  = simple_form_for @user, url: user_path do |f|
+    .row
+      .col-xs-12.col-sm-6.col-md-6
+        .row
+          .col-xs-6.col-sm-6.col-md-6
+            = f.label :first_name, required: false
+          .col-xs-6.col-sm-6.col-md-6
+            = @user.first_name
+        .row
+          .col-xs-6.col-sm-6.col-md-6
+            = f.label :last_name, required: false
+          .col-xs-6.col-sm-6.col-md-6
+            = @user.last_name

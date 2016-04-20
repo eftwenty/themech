@@ -23,9 +23,14 @@ en:
   hello: "Hello world"
   notifications:
     users:
-      successful_creation: "Great! The user was added successfully."
+      created: "Great! The user has been added successfully."
+      updated: "The user has been updated successfully."
+      deleted: "The user has been deleted."
 
   users_controller:
     actions:
       index: 'List'
       new: 'Add'
+    placeholders:
+      first_name: 'Enter the first name'
+      last_name: 'Enter the last name'

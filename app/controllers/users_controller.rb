@@ -2,18 +2,14 @@ class UsersController < ApplicationController
   layout 'user_layout'
 
   def index
-    @title = 'Users'
-
     @users = User.all
   end
 
   def show
-    @title = 'The title'
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
   end
 
   def new
-    @title = 'Create the User'
     @user = User.new
   end
 
@@ -21,9 +17,34 @@ class UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
-      redirect_to(users_path, notice: t('notifications.users.successful_creation'))
+      redirect_to(users_path, notice: t('notifications.users.created'))
     else
       render action: :new
+    end
+  end
+
+  def edit
+    @user = User.find_by_id(params[:id])
+  end
+
+  def update
+    @user = User.find_by_id(params[:id])
+
+    if @user.update_attributes(user_params)
+      redirect_to(users_path, notice: t('notifications.users.updated'))
+    else
+      render action: :edit
+    end
+  end
+
+  def destroy
+    @user = User.find_by_id(params[:id])
+
+    if @user.destroy
+      redirect_to(users_path, notice: t('notifications.users.deleted'))
+    else
+      flash[:error] = 'Something went wrong'
+      render action: :index
     end
   end
 

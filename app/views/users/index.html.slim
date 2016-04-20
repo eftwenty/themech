@@ -1,18 +1,22 @@
-.container
-  .page-header
-    h1 Users list
+.page-header
+  h1 Users list
+.content
   - if @users
-    table#dataTable
+    table#dataTable.responsive
       thead
         tr
           th Name
-          th
+          th.text-right Actions
       tbody
         - @users.each do |user|
           tr
             td #{user.decorate.pretty_name}
-            td
-              = link_to "Show", show_users_path(user)
+            td.text-right
+              => link_to 'Show', user_path(user)
+              ' |
+              => link_to 'Edit', edit_user_path(user)
+              ' |
+              => link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure you wanna delete this user?' }
 
 javascript:
   $('#dataTable').dataTable();

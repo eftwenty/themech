@@ -1,18 +1,56 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$mainColor: #7095d4;
+$secondaryColor: #3172e1;
+$hoverColor: #7a9fdd;
+
+html, body {
+  height: 100%;
+}
+
+.gradientable {
+  background: $mainColor;
+  background: -webkit-linear-gradient($mainColor, $secondaryColor); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($mainColor, $secondaryColor); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($mainColor, $secondaryColor); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($mainColor, $secondaryColor);
+}
 
 .navbar-custom {
   width: 100%;
   border-radius: inherit;
-  background-color: #2A3F54;
   color: #fff;
   border: none;
-}
 
-@media (min-width: 768px) {
-  .navbar-custom .navbar-brand {
-    padding: 10px 10px;
+  > .container-fluid > ul.nav.navbar-nav {
+    > li > a {
+      color: #fff;
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: #7a9fdd;
+      }
+    }
+
+    .open .dropdown-menu > li > a {
+      @media (max-width: 767px) {
+        color: #fff;
+      }
+    
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: #7a9fdd;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .navbar-brand {
+      padding: 10px 10px;
+    }
   }
 }
 
@@ -21,24 +59,16 @@
   height: 32px;
 }
 
-.navbar.navbar-custom > .container-fluid > ul.nav.navbar-nav > li > a {
-  color: #fff;
-}
-
-.navbar.navbar-custom > .container-fluid > ul.nav.navbar-nav > li > a:hover,
-.navbar.navbar-custom > .container-fluid > ul.nav.navbar-nav > li > a:focus {
-  background-color: #425f7c;
+.container {
+  min-height: 85%;
 }
 
 .main-footer {
+  text-align: right;
   padding: 15px 10px;
   width: 100%;
-  background-color: #2A3F54;
   color: #fff;
-}
-
-.main-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  clear: both;
+  position: relative;
+  z-index: 10;
 }

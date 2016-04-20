@@ -1,0 +1,7 @@
+.page-header
+  h1 Edit User
+.content
+  .row
+    .col-md-4.col-sm-6.col-xs-12
+      = simple_form_for @user, url: user_path(@user), method: :patch do |f|
+        = render partial: 'users/edit_form', locals: {f: f}
