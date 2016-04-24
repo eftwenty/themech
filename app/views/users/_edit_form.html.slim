@@ -1,4 +1,21 @@
-.form-group
-  = f.input :first_name, class: 'form-control', placeholder: t('users_controller.placeholders.first_name')
-  = f.input :last_name, class: 'form-control', placeholder: t('users_controller.placeholders.last_name')
-  = f.button :submit, class: 'btn btn-primary pull-right'
+.row
+  .col-md-4.col-sm-6.col-xs-12
+    = section_header 'Personal info'
+    .form-group
+      = f.input :first_name, class: 'form-control', placeholder: t('users_controller.placeholders.first_name')
+      = f.input :last_name, class: 'form-control', placeholder: t('users_controller.placeholders.last_name')
+  .col-md-4.col-sm-6.col-xs-12
+    = section_header 'E-mail addresses'
+    = f.simple_fields_for :emails do |ff|
+      = render partial: 'users/email_fields', locals: {f: ff}
+    .links
+      = link_to_add_association 'Add email', f, :emails
+.row
+  .col-md-8.col-sm-12.col-xs-12
+    hr
+    .btn-toolbar.pull-right
+      - if !current_page?('/users/new')
+        .btn-group
+          = link_to 'Cancel', user_path(@user), class: 'btn btn-default'
+      .btn-group
+        = f.button :submit, class: 'btn btn-primary pull-right'

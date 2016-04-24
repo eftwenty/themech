@@ -19,6 +19,11 @@ gem 'draper', '~> 1.3'
 
 # Form builder
 gem 'simple_form'
+# Nested forms
+gem 'cocoon'
+
+# Act as taggable
+gem 'acts-as-taggable-on', '~> 3.4'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -47,7 +52,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'quiet_assets'
   gem 'spring'
+  gem 'thin'
 
   # Testing
   gem 'rspec-rails', '~> 3.0'

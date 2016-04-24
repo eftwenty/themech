@@ -1,11 +1,13 @@
 .page-header
   h1> User Profile
-  i.small
-    = link_to 'Edit', edit_user_path(@user)
+  span
+    i.small
+      = link_to 'Edit', edit_user_path(@user)
 .content
   = simple_form_for @user, url: user_path do |f|
     .row
       .col-xs-12.col-sm-6.col-md-6
+        = section_header 'Personal info'
         .row
           .col-xs-6.col-sm-6.col-md-6
             = f.label :first_name, required: false
@@ -16,3 +18,12 @@
             = f.label :last_name, required: false
           .col-xs-6.col-sm-6.col-md-6
             = @user.last_name
+      .col-xs-12.col-sm-6.col-md-6
+        - if @user.emails
+          = section_header 'E-mail addresses'
+          - @user.emails.each_with_index do |email, index|
+            .row
+              .col-xs-6.col-sm-6.col-md-6
+                = f.label (email.primary ? :primary_email_address : "email_address_#{index}"), required: false
+              .col-xs-6.col-sm-6.col-md-6
+                = email.address

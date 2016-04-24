@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160313135042) do
+ActiveRecord::Schema.define(version: 20160420200154) do
+
+  create_table "emails", force: :cascade do |t|
+    t.string   "address",        limit: 255
+    t.boolean  "primary",        limit: 1
+    t.integer  "emailable_id",   limit: 4
+    t.string   "emailable_type", limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "emails", ["emailable_type", "emailable_id"], name: "index_emails_on_emailable_type_and_emailable_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name", limit: 255

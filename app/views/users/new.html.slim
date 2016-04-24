@@ -1,7 +1,5 @@
 .page-header
   h1 New User
 .content
-  .row
-    .col-md-4.col-sm-6.col-xs-12
-      = simple_form_for @user do |f|
-        = render partial: 'users/edit_form', locals: {f: f}
+  = simple_form_for @user do |f|
+    = render partial: 'users/edit_form', locals: {f: f}

@@ -27,6 +27,25 @@ en:
       updated: "The user has been updated successfully."
       deleted: "The user has been deleted."
 
+  activerecord:
+    errors:
+      models:
+        email:
+          attributes:
+            address:
+              invalid: 'Wrong format. Example: some_user1@mail.com'
+            primary:
+              invalid: 'Primary e-mail already exists'
+        user:
+          attributes:
+            first_name:
+              invalid: 'Only letters allowed'
+            last_name:
+              invalid: 'Only letters allowed'
+            primary_email:
+              blank: "Primary email can't be blank"
+
+
   users_controller:
     actions:
       index: 'List'
