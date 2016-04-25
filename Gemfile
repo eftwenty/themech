@@ -10,6 +10,7 @@ gem 'mysql2', '0.3.18'
 gem 'sass-rails', '~> 5.0'
 gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'select2-rails'
 
 # Datatables
 gem 'jquery-datatables-rails', '~> 3.3.0'

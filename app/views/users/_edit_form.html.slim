@@ -4,6 +4,7 @@
     .form-group
       = f.input :first_name, class: 'form-control', placeholder: t('users_controller.placeholders.first_name')
       = f.input :last_name, class: 'form-control', placeholder: t('users_controller.placeholders.last_name')
+      = f.input :role_list, collection: User::ROLES, input_html: { class: 'select2', multiple: true }
   .col-md-4.col-sm-6.col-xs-12
     = section_header 'E-mail addresses'
     = f.simple_fields_for :emails do |ff|
@@ -14,8 +15,7 @@
   .col-md-8.col-sm-12.col-xs-12
     hr
     .btn-toolbar.pull-right
-      - if !current_page?('/users/new')
-        .btn-group
-          = link_to 'Cancel', user_path(@user), class: 'btn btn-default'
+      .btn-group
+        = link_to 'Cancel', users_path, class: 'btn btn-default'
       .btn-group
         = f.button :submit, class: 'btn btn-primary pull-right'

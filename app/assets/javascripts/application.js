@@ -21,3 +21,4 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require cocoon
+//= require select2
