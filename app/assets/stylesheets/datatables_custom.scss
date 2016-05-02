@@ -8,3 +8,14 @@
 //    box-shadow: none !important;
 //  }
 //}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    border: none;
+    background: none;
+    background-color: #fff;
+    box-shadow: none;
+  }
+}

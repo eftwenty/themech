@@ -1,0 +1,35 @@
+- provide :title, 'Customers list'
+
+.page-header
+  h1 Customers list
+.content
+  - if @customers
+    table#dataTable.responsive
+      thead
+        tr
+          th Name
+          th Status
+          th Primary email
+          th.text-right Actions
+      tbody
+        - @customers.each do |customer|
+          tr
+            td #{customer.decorate.pretty_name}
+            td #{customer.decorate.pretty_status}
+            td #{customer.primary_email.try(:address)}
+            td.text-right
+              /=> link_to 'Show', customer_path(customer)
+              /' |
+              /=> link_to 'Edit', edit_customer_path(customer)
+              /' |
+              /=> link_to 'Delete', customer_path(customer), method: :delete, data: { confirm: 'Are you sure you wanna delete this user?' }
+
+javascript:
+  $('#dataTable').dataTable({
+    aoColumnDefs: [
+      {
+        bSortable: false,
+        aTargets: [-1]
+      }
+    ]
+  });

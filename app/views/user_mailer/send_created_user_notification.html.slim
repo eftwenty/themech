@@ -1,0 +1,19 @@
+div
+  span> User
+  strong> #{@user.decorate.pretty_name}
+  span has been successfully created.
+br
+
+div
+  strong Details:
+  ul
+    li
+      strong
+        i> Roles:
+      span #{@user.roles.join(', ')}
+    - if @user.emails.present?
+      - @user.emails.each do |email|
+        li
+          strong
+            i> #{email.primary? ? 'Primary e-mail' : 'E-mail'}:
+          span #{email.address}.

@@ -23,25 +23,26 @@ html, body {
   color: #fff;
   border: none;
 
-  > .container-fluid > ul.nav.navbar-nav {
+  .nav {
     > li > a {
       color: #fff;
 
       &:hover,
       &:active,
       &:focus {
-        background-color: #7a9fdd;
+        background-color: #7a9fdd ;
       }
     }
 
-    .open .dropdown-menu > li > a {
-      @media (max-width: 767px) {
-        color: #fff;
-      }
-    
-      &:hover,
-      &:active,
-      &:focus {
+    .open .dropdown-menu,
+    .open {
+      > a,
+      > a:hover,
+      > a:active,
+      > a:focus {
+        @media (max-width: 767px) {
+          color: #fff;
+        }
         background-color: #7a9fdd;
       }
     }

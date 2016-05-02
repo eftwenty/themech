@@ -8,8 +8,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body.nav-sm
-    = render 'layouts/user_header'
+    = render 'layouts/users/user_header'
     .container
       = render 'layouts/flash'
       = yield
-    = render 'layouts/user_footer'
+    = render 'layouts/users/user_footer'

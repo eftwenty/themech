@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get '/users', to: 'users#index', as: :users
   resources :users
+  resources :customers
   # , only: [:new, :create] do
   #   member do
   #     get ':id', to: 'users#show', as: :show

@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name
   validates_format_of :first_name, :last_name, with: ALPHA_REGEX
 
+  after_save :created_notification
+
   def pretty_roles
     roles.map(&:name).join(', ')
   end
@@ -20,4 +22,8 @@ class User < ActiveRecord::Base
     # validates_uniqueness_of :primary_email
 
   # validates :primary_email, length: { maximum: 1 }
+
+  def created_notification
+    UserMailer.send_created_user_notification(self).deliver
+  end
 end

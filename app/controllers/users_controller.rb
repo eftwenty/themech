@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout 'user_layout'
+  layout 'users/user_layout'
 
   def index
     @users = User.all
