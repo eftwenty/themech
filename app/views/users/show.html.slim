@@ -21,9 +21,9 @@
       .col-xs-12.col-sm-6.col-md-6
         - if @user.emails
           = section_header 'E-mail addresses'
-          - @user.emails.each_with_index do |email, index|
+          - @user.emails.each_with_index do |email|
             .row
               .col-xs-6.col-sm-6.col-md-6
-                = f.label (email.primary ? :primary_email_address : "email_address_#{index}"), required: false
+                = f.label :email, required: false
               .col-xs-6.col-sm-6.col-md-6
                 = email.address

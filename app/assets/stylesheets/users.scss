@@ -5,9 +5,9 @@ $mainColor: #7095d4;
 $secondaryColor: #3172e1;
 $hoverColor: #7a9fdd;
 
-html, body {
-  height: 100%;
-}
+//html, body {
+//  height: 100%;
+//}
 
 .gradientable {
   background: $mainColor;
@@ -65,6 +65,10 @@ html, body {
   padding-bottom: 20px;
 }
 
+.container-custom {
+  margin-top: 100px;
+}
+
 .main-footer {
   text-align: right;
   padding: 15px 10px;
@@ -73,4 +77,9 @@ html, body {
   clear: both;
   position: relative;
   z-index: 10;
+}
+
+.fixed {
+  position: absolute;
+  top: 0;
 }

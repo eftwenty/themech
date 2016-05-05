@@ -9,7 +9,7 @@ html
     = csrf_meta_tags
   body.nav-sm
     = render 'layouts/header'
-    .container
+    .container.container-custom
       = render 'layouts/flash'
       = yield
-  = render 'layouts/customers/customer_footer'
+  /= render 'layouts/customers/customer_footer'
