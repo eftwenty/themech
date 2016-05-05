@@ -1,0 +1,17 @@
+.navbar.navbar-custom.gradientable
+  .container-fluid
+    .navbar-header
+      .navbar-brand
+        = image_tag 'logo-white.png', class: 'logo'
+    - if current_logged_in.present?
+      ul.nav.navbar-nav.pull-right
+        li.dropdown
+          a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
+            i.fa.fa-cog.fa-lg.fa-fw
+            span #{current_logged_in.decorate.pretty_name}
+            span.caret
+          ul.dropdown-menu.dropdown-menu-right
+            li
+              = link_to destroy_customer_session_path, method: :delete do
+                i.fa.fa-power-off.fa-fw
+                span Log out

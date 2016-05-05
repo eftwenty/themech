@@ -11,9 +11,8 @@ div
       strong
         i> Roles:
       span #{@user.roles.join(', ')}
-    - if @user.emails.present?
-      - @user.emails.each do |email|
-        li
-          strong
-            i> #{email.primary? ? 'Primary e-mail' : 'E-mail'}:
-          span #{email.address}.
+
+    li
+      strong
+        i> E-mail:
+      span #{@user.email}

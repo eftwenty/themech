@@ -1,2 +1,6 @@
 - flash.each do |key, message|
-  .alert.alert-info #{message}
+  - alert_class = key == 'alert' ? 'warning' : 'info'
+  div class="alert alert-#{alert_class}"
+    = message
+    button type="button" class="close" data-dismiss="alert" aria-label="Close"
+      span aria-hidden="true" &times;

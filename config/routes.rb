@@ -1,26 +1,21 @@
 Rails.application.routes.draw do
-  get '/users', to: 'users#index', as: :users
+  devise_for :customers,
+             controllers: {
+                 sessions: 'custom_devise/sessions',
+                 registrations: 'custom_devise/registrations',
+                 passwords: 'custom_devise/passwords'
+             }
+
+  devise_for :users,
+             controllers: {
+                 sessions: 'custom_devise/sessions',
+                 registrations: 'custom_devise/registrations',
+                 passwords: 'custom_devise/passwords'
+             }
+
+  root 'customers#index'
   resources :users
   resources :customers
-  # , only: [:new, :create] do
-  #   member do
-  #     get ':id', to: 'users#show', as: :show
-  #     get ':id/edit', to: 'users#edit', as: :edit
-  #     post :update, as: :update
-  #   end
-  # end
-  # , only: [] do
-  #   collection do
-  #     get '/new', to: 'users#new'
-  #     post :create
-  #   end
-  #
-  #   member do
-  #     get ':id', to: 'users#show', as: :show
-  #     get ':id/edit', to: 'users#edit', as: :edit
-  #     post :update, as: :update
-  #   end
-  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

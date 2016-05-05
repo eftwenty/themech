@@ -1,7 +1,10 @@
 - provide :title, 'Users list'
 
 .page-header
-  h1 Users list
+  h1
+    | Users list
+    span
+      = link_to 'Add user', new_user_path, class: 'btn btn-success pull-right'
 .content
   - if @users
     table#dataTable.responsive
@@ -15,14 +18,16 @@
         - @users.each do |user|
           tr
             td #{user.decorate.pretty_name}
-            td #{user.primary_email.try(:address)}
-            td #{user.pretty_roles}
+            td #{user.email}
+            td #{user.decorate.pretty_roles}
             td.text-right
               => link_to 'Show', user_path(user)
-              ' |
-              => link_to 'Edit', edit_user_path(user)
-              ' |
-              => link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure you wanna delete this user?' }
+              - if current_logged_in.role_list.include?('Admin')
+                ' |
+                => link_to 'Edit', edit_user_path(user)
+                - unless current_logged_in == user
+                  ' |
+                  => link_to 'Delete', user_path(user), method: :delete, data: { confirm: 'Are you sure you wanna delete this user?' }
 
 javascript:
   $('#dataTable').dataTable({

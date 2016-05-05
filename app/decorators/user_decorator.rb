@@ -13,4 +13,8 @@ class UserDecorator < Draper::Decorator
   def pretty_name
     "#{object.first_name} #{object.last_name}"
   end
+
+  def pretty_roles
+    object.roles.map(&:name).join(', ')
+  end
 end

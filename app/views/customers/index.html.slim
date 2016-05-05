@@ -16,7 +16,7 @@
           tr
             td #{customer.decorate.pretty_name}
             td #{customer.decorate.pretty_status}
-            td #{customer.primary_email.try(:address)}
+            td #{customer.email}
             td.text-right
               /=> link_to 'Show', customer_path(customer)
               /' |
