@@ -1,7 +1,5 @@
-class CustomersController < ApplicationController
-  layout 'customers/customer_layout'
-
-  # before_action :authenticate_customer!
+class Manage::CustomersController < ApplicationController
+  layout 'users/user_layout'
 
   def index
     @customers = Customer.all

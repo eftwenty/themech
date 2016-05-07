@@ -69,6 +69,10 @@ $hoverColor: #7a9fdd;
   margin-top: 100px;
 }
 
+.from-top {
+  margin-top: 50px;
+}
+
 .main-footer {
   text-align: right;
   padding: 15px 10px;
@@ -80,6 +84,30 @@ $hoverColor: #7a9fdd;
 }
 
 .fixed {
-  position: absolute;
+  position: fixed;
   top: 0;
+}
+
+.list-special {
+  .list-group-item {
+    //display: inline-block;
+    width: 10%;
+  }
+  .list-group-item:first-child {
+    border-top-right-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+  }
+
+  .list-group-item:last-child {
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
+}
+
+#sidebar {
+  z-index: 1;
+}
+
+.navbar.navbar-custom {
+  z-index: 2 !important;
 }

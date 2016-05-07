@@ -4,11 +4,12 @@
     .form-group
       = f.input :first_name, class: 'form-control', placeholder: t('users_controller.placeholders.first_name')
       = f.input :last_name, class: 'form-control', placeholder: t('users_controller.placeholders.last_name')
+      = f.input :email, class: 'form-control', placeholder: t('users_controller.placeholders.email')
       = f.input :role_list, collection: User::ROLES, input_html: { class: 'select2', multiple: true }
   .col-md-4.col-sm-6.col-xs-12
-    = section_header 'E-mail addresses'
+    = section_header 'Additional email addresses'
     = f.simple_fields_for :emails do |ff|
-      = render partial: 'users/email_fields', locals: {f: ff}
+      = render partial: 'manage/users/email_fields', locals: {f: ff}
     .links
       = link_to_add_association 'Add email', f, :emails
 .row
@@ -18,4 +19,4 @@
       .btn-group
         = link_to 'Cancel', users_path, class: 'btn btn-default'
       .btn-group
-        = f.button :submit, class: 'btn btn-primary pull-right'
+        = f.button :submit,  class: 'btn btn-primary pull-right'

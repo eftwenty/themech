@@ -35,15 +35,17 @@ en:
             address:
               invalid: 'Wrong format. Example: some_user1@mail.com'
             primary:
-              invalid: 'Primary e-mail already exists'
+              invalid: 'Email already exists'
         user:
           attributes:
             first_name:
               invalid: 'Only letters allowed'
             last_name:
               invalid: 'Only letters allowed'
-            primary_email:
-              blank: "Primary email can't be blank"
+            email:
+              blank: "Email can't be blank"
+            email:
+              invalid: 'Wrong format. Example: some_user1@mail.com'
         customer:
           attributes:
             first_name:
@@ -59,6 +61,7 @@ en:
     placeholders:
       first_name: 'Enter the first name'
       last_name: 'Enter the last name'
+      email: 'Enter the email'
   customers_controller:
     actions:
       index: 'List'

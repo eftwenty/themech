@@ -7,10 +7,16 @@ class ApplicationController < ActionController::Base
   # private
   #
   def authenticate!
-    if params[:controller] == 'customers'
+    if params[:controller].include?('manage')
+      if (!current_user && !current_customer) || current_user
+        authenticate_user!
+      else
+        reset_session
+      end
+    elsif params[:controller].include?('clients')
       authenticate_customer!
     else
-      authenticate_user!
+      return
     end
   end
 end

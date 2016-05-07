@@ -1,12 +1,19 @@
 class CustomDevise::SessionsController < Devise::SessionsController
   layout 'custom_devise/layout'
 
-  before_filter :prevent_customers, except: [:destroy]
+  before_filter :move_forward, only: [:create]
 
-  def prevent_customers
-    if current_customer
-      flash[:alert] = t('devise.failure.already_authenticated')
-      redirect_to customers_path
-    end
+  def get_home
+    home = if current_customer
+             client_path(current_customer)
+           elsif current_user
+             customers_path
+           else
+             root_path
+           end
+  end
+
+  def move_forward
+    redirect_to get_home
   end
 end

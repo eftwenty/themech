@@ -1,7 +1,7 @@
 module ApplicationHelper
   ALPHA_REGEX = '/^[A-z]+$/'
 
-  # View helpers
+  ### View helpers
   def section_header label
     content_tag :h4 do
       content_tag(:strong, label) +
@@ -9,16 +9,19 @@ module ApplicationHelper
     end
   end
 
-  ###
+  ### Active page
+  def get_active_for path
+    'active gradientable' if current_page?(path)
+  end
 
-  # Current logged in person
+
+
+  ### Current logged in person
   def current_logged_in
     current_user || current_customer
   end
 
-  ###
-
-  # Unified Devise helpers
+  ### Unified Devise helpers
   def model_index_path
     send("#{underscored_resource}s_path")
   end
@@ -43,9 +46,11 @@ module ApplicationHelper
     send("new_#{underscored_resource}_password_path")
   end
 
-
+  def devise_log_out_path
+    send("destroy_#{underscored_resource}_session_path")
+  end
 
   def underscored_resource
-    resource.class.to_s.underscore
+    current_logged_in.present? ? current_logged_in.class.to_s.underscore : resource.class.to_s.underscore
   end
 end

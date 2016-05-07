@@ -12,6 +12,6 @@
             span.caret
           ul.dropdown-menu.dropdown-menu-right
             li
-              = link_to destroy_customer_session_path, method: :delete do
-                i.fa.fa-power-off.fa-fw
+              = link_to devise_log_out_path, method: :delete do
+                i.fa.fa-power-off.fa-fw>
                 span Log out

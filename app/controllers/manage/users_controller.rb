@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Manage::UsersController < ApplicationController
   layout 'users/user_layout'
 
   # before_action :authenticate!
@@ -53,6 +53,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, role_list: [], emails_attributes: [:id, :address, :primary, :_destroy])
+    params.require(:user).permit(:first_name, :last_name, :email, role_list: [], emails_attributes: [:id, :address, :_destroy])
   end
 end

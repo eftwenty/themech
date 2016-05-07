@@ -8,7 +8,7 @@ class Customer < ActiveRecord::Base
          :trackable,
          :validatable
 
-  # has_many :emails, as: :emailable
+  has_many :emails, as: :emailable
   # has_one :primary_email, -> {where primary: true}, as: :emailable, inverse_of: :emailable, class_name: 'Email'
 
   # validates_presence_of :first_name, :last_name

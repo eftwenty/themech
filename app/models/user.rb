@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :emails, allow_destroy: true
   acts_as_taggable_on :roles
 
+  validates_format_of :email, with: Email::EMAIL_REGEX
   validates_uniqueness_of :email
   # validates_presence_of :first_name, :last_name
   # validates_format_of :first_name, :last_name, with: ALPHA_REGEX
