@@ -1,0 +1,21 @@
+.row
+  .col-md-4.col-sm-6.col-xs-12
+    = section_header 'Personal info'
+    .form-group
+      = f.input :first_name, class: 'form-control', required: true, placeholder: t('users_controller.placeholders.first_name')
+      = f.input :last_name, class: 'form-control', required: true, placeholder: t('users_controller.placeholders.last_name')
+      = f.input :email, class: 'form-control', required: true, placeholder: t('users_controller.placeholders.email')
+  .col-md-4.col-sm-6.col-xs-12
+    = section_header 'Additional email addresses'
+    = f.simple_fields_for :emails do |ff|
+      = render partial: 'clients/customers/email_fields', locals: {f: ff}
+    .links
+      = link_to_add_association 'Add email', f, :emails
+.row
+  .col-md-8.col-sm-12.col-xs-12
+    hr
+    .btn-toolbar.pull-right
+      .btn-group
+        = link_to 'Cancel', client_path(@customer), class: 'btn btn-default'
+      .btn-group
+        = f.button :submit,  class: 'btn btn-primary pull-right'

@@ -8,9 +8,14 @@
         li.dropdown
           a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
             i.fa.fa-cog.fa-lg.fa-fw
-            span #{current_logged_in.decorate.pretty_name}
+            span> #{current_logged_in.decorate.pretty_name}
             span.caret
           ul.dropdown-menu.dropdown-menu-right
+            - if current_customer
+              li
+                = link_to client_path(current_customer) do
+                  i.fa.fa-user.fa-fw>
+                  span Profile
             li
               = link_to devise_log_out_path, method: :delete do
                 i.fa.fa-power-off.fa-fw>

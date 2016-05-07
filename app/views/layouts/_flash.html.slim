@@ -1,5 +1,5 @@
 - flash.each do |key, message|
-  - alert_class = key == 'alert' ? 'warning' : 'info'
+  - alert_class = case key when 'alert' then 'warning' when 'success' then 'success' else 'info' end
   div class="alert alert-#{alert_class}"
     = message
     button type="button" class="close" data-dismiss="alert" aria-label="Close"

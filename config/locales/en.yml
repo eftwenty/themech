@@ -26,6 +26,8 @@ en:
       created: "Great! The user has been added successfully."
       updated: "The user has been updated successfully."
       deleted: "The user has been deleted."
+    customers:
+      updated: "Your profile has been updated successfully."
 
   activerecord:
     errors:

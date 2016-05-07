@@ -14,6 +14,7 @@ class CustomDevise::SessionsController < Devise::SessionsController
   end
 
   def move_forward
+    return if !current_customer && !current_user
     redirect_to get_home
   end
 end

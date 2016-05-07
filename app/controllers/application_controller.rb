@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
         reset_session
       end
     elsif params[:controller].include?('clients')
+      reset_session if current_user
       authenticate_customer!
     else
       return

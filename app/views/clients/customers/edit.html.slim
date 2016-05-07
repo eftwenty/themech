@@ -1,0 +1,7 @@
+- provide :title, 'Profile'
+
+.page_header
+  h1 Profile
+.content
+  = simple_form_for @customer, url: client_path(@customer), method: :patch do |f|
+    = render partial: 'clients/customers/edit_form', locals: {f: f}
