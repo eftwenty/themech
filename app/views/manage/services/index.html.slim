@@ -1,0 +1,32 @@
+- provide :title, 'Services list'
+
+.page-header
+  h1
+    | Services
+    span
+      = link_to 'Add service', new_service_path, class: 'btn btn-success pull-right'
+.content
+  - if @services
+    table#dataTable.responsive
+      thead
+        tr
+          th Name
+          th Variety
+          th Man-hours
+          th Price
+          th.text-right Actions
+      tbody
+        - @services.each do |service|
+          tr
+            td #{service.name}
+            td #{service.decorate.pretty_variety}
+            td #{service.man_hours}
+            td #{service.price}
+            td.text-right
+              => link_to 'Show', service_path(service)
+              - if current_user.role_list.include?('Admin' || 'Finance')
+                ' |
+                => link_to 'Edit', edit_service_path(service)
+                - if current_user.role_list.include?('Admin')
+                  ' |
+                  => link_to 'Delete', service_path(service), method: :delete, data: { confirm: 'Are you sure you wanna delete this service?' }

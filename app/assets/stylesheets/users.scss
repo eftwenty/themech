@@ -90,7 +90,7 @@ $hoverColor: #7a9fdd;
 
 .list-special {
   .list-group-item {
-    //display: inline-block;
+    display: inline-block;
     width: 10%;
   }
   .list-group-item:first-child {
@@ -105,7 +105,7 @@ $hoverColor: #7a9fdd;
 }
 
 #sidebar {
-  z-index: 0;
+  z-index: 1;
 }
 
 .navbar.navbar-custom {

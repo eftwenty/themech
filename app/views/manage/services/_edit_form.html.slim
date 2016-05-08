@@ -1,0 +1,14 @@
+.row
+  .col-md-4.col-sm-6.col-xs-12
+    .form-group
+      = f.input :name, class: 'form-control'
+      = f.input :variety_list, collection: Service::VARIETY, class: 'form-control', input_html: { class: 'select2-input', multiple: 'multiple' }, required: true, label: 'Variety'
+      = f.input :man_hours, class: 'form-control', label: 'Man-hour', as: :string
+.row
+  .col-md-8.col-sm-12.col-xs-12
+    hr
+    .btn-toolbar.pull-right
+      .btn-group
+        = link_to 'Cancel', services_path, class: 'btn btn-default'
+      .btn-group
+        = f.button :submit,  class: 'btn btn-primary pull-right'

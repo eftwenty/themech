@@ -1,5 +1,5 @@
 class Customer < ActiveRecord::Base
-  ALPHA_REGEX = /\A^[A-z]+$\z/
+  include Constants
 
   devise :database_authenticatable,
          :registerable,

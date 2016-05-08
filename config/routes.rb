@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
     resources :users
     resources :customers
+    resources :services
   end
   namespace :clients, as: nil do
     devise_for :customers,

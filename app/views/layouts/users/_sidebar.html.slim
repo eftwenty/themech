@@ -1,8 +1,11 @@
 .navbar-fixed-top#sidebar
   .list-group.list-special.from-top
-    = link_to users_path, class: "list-group-item #{get_active_for users_path}" do
-      i.fa.fa-user.fa-lg.fa-fw>
-      span Users
     = link_to customers_path, class: "list-group-item #{get_active_for customers_path}" do
       i.fa.fa-suitcase.fa-lg.fa-fw>
       span Customers
+    = link_to users_path, class: "list-group-item #{get_active_for users_path}" do
+      i.fa.fa-user.fa-lg.fa-fw>
+      span Users
+    = link_to services_path, class: "list-group-item #{get_active_for services_path}" do
+      i.fa.fa-wrench.fa-lg.fa-fw>
+      span Services

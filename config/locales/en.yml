@@ -22,12 +22,14 @@
 en:
   hello: "Hello world"
   notifications:
-    users:
-      created: "Great! The user has been added successfully."
-      updated: "The user has been updated successfully."
-      deleted: "The user has been deleted."
+    created: "Great! The %{instance} has been added successfully."
+    updated: "The %{instance} has been updated successfully."
+    deleted: "The %{instance} has been deleted."
     customers:
       updated: "Your profile has been updated successfully."
+  prompts:
+#  TODO yep
+#    delete: "Are you sure you wanna delete this %{instance}?"
 
   activerecord:
     errors:

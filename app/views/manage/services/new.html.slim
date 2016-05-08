@@ -1,0 +1,5 @@
+.page-header
+  h1 New service
+.content
+  = simple_form_for @service do |f|
+    = render partial: 'manage/services/edit_form', locals: {f: f}

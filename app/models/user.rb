@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  ALPHA_REGEX = /\A^[A-z]+$\z/
   ROLES = %w(Admin Calls Finance HR)
 
   devise :database_authenticatable,

@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include Formats
   ALPHA_REGEX = '/^[A-z]+$/'
 
   ### View helpers

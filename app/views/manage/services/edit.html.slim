@@ -1,0 +1,5 @@
+.page-header
+  h1 Edit service
+.content
+  = simple_form_for @service, url: service_path(@service), method: :patch do |f|
+    = render partial: 'manage/services/edit_form', locals: {f: f}

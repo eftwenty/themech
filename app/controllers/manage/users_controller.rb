@@ -4,7 +4,7 @@ class Manage::UsersController < ApplicationController
   # before_action :authenticate!
 
   def index
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
   end
 
   def show
@@ -19,7 +19,7 @@ class Manage::UsersController < ApplicationController
     @user = User.new user_params
 
     if @user.save
-      redirect_to(users_path, notice: t('notifications.users.created'))
+      redirect_to(users_path, notice: t('notifications.created', instance: 'user'))
     else
       render action: :new
     end
@@ -33,7 +33,7 @@ class Manage::UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
 
     if @user.update_attributes(user_params)
-      redirect_to(users_path, notice: t('notifications.users.updated'))
+      redirect_to(users_path, notice: t('notifications.updated', instance: 'user'))
     else
       render action: :edit
     end
@@ -43,7 +43,7 @@ class Manage::UsersController < ApplicationController
     @user = User.find_by_id(params[:id])
 
     if @user.destroy
-      redirect_to(users_path, notice: t('notifications.users.deleted'))
+      redirect_to(users_path, notice: t('notifications.deleted', instance: 'user'))
     else
       flash[:error] = 'Something went wrong'
       render action: :index
