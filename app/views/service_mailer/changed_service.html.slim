@@ -1,0 +1,15 @@
+h3 The service was updated.
+
+div
+  p
+    ' The
+    => link_to "#{@service.name_was}", service_path(@service)
+    ' was updated.
+
+  p
+    strong Changes:
+    ul
+      - @service.changes.except(:updated_at).each do |change|
+        li
+          strong> #{change.first.humanize}:
+          span #{change.second.first} => #{change.second.last}

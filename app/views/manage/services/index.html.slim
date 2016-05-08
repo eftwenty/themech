@@ -3,8 +3,9 @@
 .page-header
   h1
     | Services
-    span
-      = link_to 'Add service', new_service_path, class: 'btn btn-success pull-right'
+    - if current_user.admin?
+      span
+        = link_to 'Add service', new_service_path, class: 'btn btn-success pull-right'
 .content
   - if @services
     table#dataTable.responsive
@@ -27,6 +28,6 @@
               - if current_user.role_list.include?('Admin' || 'Finance')
                 ' |
                 => link_to 'Edit', edit_service_path(service)
-                - if current_user.role_list.include?('Admin')
+                - if current_user.admin?
                   ' |
                   => link_to 'Delete', service_path(service), method: :delete, data: { confirm: 'Are you sure you wanna delete this service?' }

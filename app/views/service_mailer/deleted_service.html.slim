@@ -1,0 +1,8 @@
+h3 User deleted a service.
+
+div
+  p
+    span> The
+    strong> #{@service.name}
+    ' was deleted by
+    = link_to "#{@user.decorate.pretty_name}", user_path(@user)

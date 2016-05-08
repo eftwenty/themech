@@ -1,0 +1,8 @@
+h3 User updated a service.
+
+div
+  p
+    ' The
+    => link_to "service", service_path(@service)
+    ' was updated by
+    = link_to "#{@user.decorate.pretty_name}", user_path(@user)

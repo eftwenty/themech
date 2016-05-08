@@ -30,7 +30,9 @@ class Manage::ServicesController < ApplicationController
   def update
     @service = Service.find_by_id(params[:id])
 
+    old_variety_list = @service.variety_list
     if @service.update(service_params)
+      ServiceMailer.user_changed_service(current_user, @service).deliver if (@service.changed? || @service.variety_list != old_variety_list)
       redirect_to(services_path, notice: t('notifications.updated', instance: 'service'))
     else
       render action: :edit
@@ -41,6 +43,7 @@ class Manage::ServicesController < ApplicationController
     @service = Service.find_by_id(params[:id])
 
     if @service.destroy
+      ServiceMailer.deleted_service(current_user, @service).deliver
       redirect_to(services_path, notice: t('notifications.deleted', instance: 'service'))
     else
       flash[:error] = 'Something went wrong'
@@ -51,6 +54,6 @@ class Manage::ServicesController < ApplicationController
   private
 
   def service_params
-    params.require(:service).permit(:name, :man_hours, variety_list: [])
+    params.require(:service).permit(:name, :man_hours, :price, variety_list: [])
   end
 end

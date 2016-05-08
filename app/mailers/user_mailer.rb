@@ -5,7 +5,7 @@ class UserMailer < ApplicationMailer
     @user = user
 
     mail  subject: 'User created',
-          to: 'to_someone@mail.somewhere',
-          from: 'from_someone@mail.somewhere'
+          to: 'eftwenty@gmail.com',
+          from: 'the.mech.mail@gmail.com'
   end
 end
