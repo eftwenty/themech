@@ -47,8 +47,9 @@ en:
               invalid: 'Only letters allowed'
             email:
               blank: "Email can't be blank"
-            email:
               invalid: 'Wrong format. Example: some_user1@mail.com'
+            role_list:
+              uniq: "Admin user already exists in system."
         customer:
           attributes:
             first_name:

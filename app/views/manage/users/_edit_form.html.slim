@@ -2,10 +2,13 @@
   .col-md-4.col-sm-4.col-xs-12
     = section_header 'Personal info'
     .form-group
-      = f.input :first_name, class: 'form-control', placeholder: t('users_controller.placeholders.first_name')
-      = f.input :last_name, class: 'form-control', placeholder: t('users_controller.placeholders.last_name')
-      = f.input :email, class: 'form-control', placeholder: t('users_controller.placeholders.email')
-      = f.input :role_list, collection: User::ROLES, input_html: { class: 'select2-input', multiple: true }
+      = f.input :first_name, placeholder: t('users_controller.placeholders.first_name')
+      = f.input :last_name, placeholder: t('users_controller.placeholders.last_name')
+      = f.input :email, placeholder: t('users_controller.placeholders.email')
+      .dependent
+        = f.input :role_list, collection: (User.role_exists?('Admin') ? User::ROLES_WITHOUT_ADMIN : User::ROLES), input_html: { class: 'select2-input', multiple: true }
+        .box{data = {show_if: 'Worker'}}
+          = f.input :work_variety_list, collection: Service::VARIETY, input_html: { class: 'select2-input', multiple: true }
   .col-md-8.col-sm-8.col-xs-12
     = section_header 'Contact information'
     .col-md-6.col-sm-6.col-xs-12

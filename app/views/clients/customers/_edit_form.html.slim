@@ -2,9 +2,9 @@
   .col-md-4.col-sm-4.col-xs-12
     = section_header 'Personal info'
     .form-group
-      = f.input :first_name, class: 'form-control', required: true, placeholder: t('users_controller.placeholders.first_name')
-      = f.input :last_name, class: 'form-control', required: true, placeholder: t('users_controller.placeholders.last_name')
-      = f.input :email, class: 'form-control', required: true, placeholder: t('users_controller.placeholders.email')
+      = f.input :first_name, required: true, placeholder: t('users_controller.placeholders.first_name')
+      = f.input :last_name, required: true, placeholder: t('users_controller.placeholders.last_name')
+      = f.input :email, required: true, placeholder: t('users_controller.placeholders.email')
   .col-md-8.col-sm-8.col-xs-12
     = section_header 'Contact information'
     .col-md-6.col-sm-6.col-xs-12
