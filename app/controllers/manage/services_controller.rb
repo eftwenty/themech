@@ -2,7 +2,7 @@ class Manage::ServicesController < ApplicationController
   layout 'users/user_layout'
 
   def index
-    @services = Service.all
+    @services = Service.order(pending: :desc)
   end
 
   def show
@@ -31,9 +31,13 @@ class Manage::ServicesController < ApplicationController
     @service = Service.find_by_id(params[:id])
 
     old_variety_list = @service.variety_list
-    if @service.update(service_params)
-      ServiceMailer.user_changed_service(current_user, @service).deliver if (@service.changed? || @service.variety_list != old_variety_list)
+    old_service_attibutes = @service.attributes
+    @service.assign_attributes service_params
+    if @service.save && old_variety_list != @service.variety_list && old_service_attibutes != @service.attributes
+      ServiceMailer.user_changed_service(current_user, @service).deliver
       redirect_to(services_path, notice: t('notifications.updated', instance: 'service'))
+    elsif @service.save
+      redirect_to services_path
     else
       render action: :edit
     end
@@ -54,6 +58,6 @@ class Manage::ServicesController < ApplicationController
   private
 
   def service_params
-    params.require(:service).permit(:name, :man_hours, :price, variety_list: [])
+    params.require(:service).permit(:name, :man_hours, :price, :pending, variety_list: [])
   end
 end

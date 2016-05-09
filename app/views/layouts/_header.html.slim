@@ -3,6 +3,12 @@
     .navbar-header
       .navbar-brand
         = image_tag 'logo-white.png', class: 'logo'
+    - if current_customer
+      ul.nav.navbar-nav
+        li
+          = link_to available_services_path do
+            i.fa.fa-wrench.fa-lg.fa-fw>
+            span Services
     - if current_logged_in.present?
       ul.nav.navbar-nav.pull-right
         li.dropdown

@@ -4,6 +4,7 @@
       = f.input :name, class: 'form-control'
       = f.input :variety_list, collection: Service::VARIETY, class: 'form-control', input_html: { class: 'select2-input', multiple: 'multiple' }, required: true, label: 'Variety'
       = f.input :man_hours, class: 'form-control', label: 'Man-hour', as: :string
+      = f.input :pending, as: :boolean, label: 'Pending?'
 .row
   .col-md-8.col-sm-12.col-xs-12
     hr

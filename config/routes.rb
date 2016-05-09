@@ -21,6 +21,7 @@ Rails.application.routes.draw do
                    passwords: 'custom_devise/passwords'
                }
     resources :customers, as: :clients, only: [:show, :edit, :update]
+    resources :services, as: :available_services, only: [:index]
   end
   resources :home, only: [:index]
   # The priority is based upon order of creation: first created -> highest priority.

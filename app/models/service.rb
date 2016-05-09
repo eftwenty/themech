@@ -12,6 +12,9 @@ class Service < ActiveRecord::Base
   validates_format_of :name, with: ALPHA_REGEX
   validates_numericality_of :man_hours, :price
 
+  scope :pending, -> { where(pending: true) }
+  scope :available, -> { where.not(pending: true) }
+
   def service_changed
     ServiceMailer.changed_service(self).deliver
   end

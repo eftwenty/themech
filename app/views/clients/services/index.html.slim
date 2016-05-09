@@ -1,0 +1,21 @@
+- provide :title, 'Services list'
+
+.page-header
+  h1
+    | Services list
+.content
+  - if @services
+    table#dataTable.responsive
+      thead
+        tr
+          th Name
+          th Variety
+          th Man-hours
+          th Price
+      tbody
+        - @services.each do |service|
+          tr
+            td #{service.name}
+            td #{service.decorate.pretty_variety}
+            td #{service.man_hours}
+            td #{service.price}
