@@ -12,6 +12,9 @@ gem 'slim-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'select2-rails'
 
+# Input masks
+gem 'jquery-inputmask-rails', github: 'knapo/jquery-inputmask-rails'
+
 # Datatables
 gem 'jquery-datatables-rails', '~> 3.3.0'
 

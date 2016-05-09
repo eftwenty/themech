@@ -17,6 +17,17 @@ Global =
           bSortable: false,
           aTargets: [-1]
       ]
+  
+  applyPhoneInputMasks: ->
+    $('.phone-mask').each ->
+      $(this).inputmask '[+99] (999) 999-9999'
+
+  initInputMasks: ->
+    $(document).on('click', 'a.add_fields', ( -> Global.applyPhoneInputMasks() ))
+
+
 $ ->
   Global.initSelect2()
   Global.initDatatables()
+  Global.applyPhoneInputMasks()
+  Global.initInputMasks()

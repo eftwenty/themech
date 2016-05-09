@@ -53,6 +53,10 @@ class Manage::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, role_list: [], emails_attributes: [:id, :address, :_destroy])
+    params.require(:user).permit(
+        :first_name, :last_name, :email, role_list: [],
+        emails_attributes: [:id, :address, :_destroy],
+        phones_attributes: [:id, :number, :primary, :_destroy]
+    )
   end
 end

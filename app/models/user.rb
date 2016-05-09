@@ -8,8 +8,10 @@ class User < ActiveRecord::Base
          :validatable
 
   has_many  :emails, as: :emailable, dependent: :destroy
+  has_many  :phones, as: :phoneable, dependent: :destroy
 
   accepts_nested_attributes_for :emails, allow_destroy: true
+  accepts_nested_attributes_for :phones, allow_destroy: true
   acts_as_taggable_on :roles
 
   validates_format_of :email, with: Email::EMAIL_REGEX

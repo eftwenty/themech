@@ -28,9 +28,18 @@
       .col-xs-12.col-sm-6.col-md-6
         - if @customer.emails
           = section_header 'E-mail addresses'
-          - @customer.emails.each_with_index do |email|
+          - @customer.emails.each do |email|
             .row
               .col-xs-6.col-sm-6.col-md-6
                 = f.label :email_address, required: false
               .col-xs-6.col-sm-6.col-md-6
                 = email.address
+          hr
+        - if @customer.phones
+          = section_header 'Phone numbers'
+          - @customer.phones.order('phones.primary desc').each do |phone|
+            .row
+              .col-xs-6.col-sm-6.col-md-6
+                = f.label (phone.primary? ? :primary_phone_number : :phone_number), required: false
+              .col-xs-6.col-sm-6.col-md-6
+                = phone.number

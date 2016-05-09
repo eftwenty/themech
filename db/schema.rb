@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160508140251) do
+ActiveRecord::Schema.define(version: 20160509134104) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "first_name",             limit: 255
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 20160508140251) do
   end
 
   add_index "emails", ["emailable_type", "emailable_id"], name: "index_emails_on_emailable_type_and_emailable_id", using: :btree
+
+  create_table "phones", force: :cascade do |t|
+    t.string  "number",         limit: 255
+    t.boolean "primary",        limit: 1
+    t.integer "phoneable_id",   limit: 4
+    t.string  "phoneable_type", limit: 255
+  end
+
+  add_index "phones", ["phoneable_type", "phoneable_id"], name: "index_phones_on_phoneable_type_and_phoneable_id", using: :btree
 
   create_table "services", force: :cascade do |t|
     t.string   "name",       limit: 255

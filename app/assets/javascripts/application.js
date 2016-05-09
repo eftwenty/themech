@@ -22,3 +22,7 @@
 //= require bootstrap-sprockets
 //= require cocoon
 //= require select2-full
+//= require inputmask
+//= require jquery.inputmask
+//= require inputmask.phone.extensions
+//= require inputmask.regex.extensions

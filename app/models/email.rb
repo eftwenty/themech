@@ -7,4 +7,12 @@ class Email < ActiveRecord::Base
   validates_presence_of :address
   validates_format_of :address, with: EMAIL_REGEX
   validates_uniqueness_of :address
+  validate :uniq
+
+  def uniq
+    emailable_class = emailable.class.to_s.classify.constantize
+    if emailable_class.where(email: address).present?
+      errors.add(:address, :uniq)
+    end
+  end
 end

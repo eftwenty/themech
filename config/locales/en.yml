@@ -38,8 +38,7 @@ en:
           attributes:
             address:
               invalid: 'Wrong format. Example: some_user1@mail.com'
-            primary:
-              invalid: 'Email already exists'
+              uniq: 'Email already exists'
         user:
           attributes:
             first_name:

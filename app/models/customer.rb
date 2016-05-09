@@ -9,9 +9,11 @@ class Customer < ActiveRecord::Base
          :validatable
 
   has_many :emails, as: :emailable
+  has_many :phones, as: :phoneable
   # has_one :primary_email, -> {where primary: true}, as: :emailable, inverse_of: :emailable, class_name: 'Email'
 
   accepts_nested_attributes_for :emails, allow_destroy: true
+  accepts_nested_attributes_for :phones, allow_destroy: true
 
   before_save :check_completed
 

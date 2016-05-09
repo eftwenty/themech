@@ -18,12 +18,31 @@
             = f.label :last_name, required: false
           .col-xs-6.col-sm-6.col-md-6
             = @user.last_name
+        .row
+          .col-xs-6.col-sm-6.col-md-6
+            = f.label :primary_email, required: false
+          .col-xs-6.col-sm-6.col-md-6
+            = @user.email
+        .row
+          .col-xs-6.col-sm-6.col-md-6
+            = f.label :roles, required: false
+          .col-xs-6.col-sm-6.col-md-6
+            = @user.decorate.pretty_roles
       .col-xs-12.col-sm-6.col-md-6
         - if @user.emails
           = section_header 'E-mail addresses'
-          - @user.emails.each_with_index do |email|
+          - @user.emails.each do |email|
             .row
               .col-xs-6.col-sm-6.col-md-6
                 = f.label :email, required: false
               .col-xs-6.col-sm-6.col-md-6
                 = email.address
+          hr
+        - if @user.phones
+          = section_header 'Phone numbers'
+          - @user.phones.order('phones.primary desc').each do |phone|
+            .row
+              .col-xs-6.col-sm-6.col-md-6
+                = f.label (phone.primary? ? :primary_phone_number : :phone_number), required: false
+              .col-xs-6.col-sm-6.col-md-6
+                = phone.number

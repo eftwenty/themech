@@ -21,7 +21,11 @@ class Clients::CustomersController < ApplicationController
   private
 
   def update_params
-    params.require(:customer).permit(:first_name, :last_name, :email, emails_attributes: [:id, :address, :_destroy])
+    params.require(:customer).permit(
+        :first_name, :last_name, :email,
+        emails_attributes: [:id, :address, :_destroy],
+        phones_attributes: [:id, :number, :primary, :_destroy]
+    )
   end
 
   def get_current_customer
