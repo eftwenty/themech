@@ -7,4 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Admin
-User.create(first_name: 'Admin', last_name: 'User', email: 'adminuser@mail.com', password: 'pewpew', password_confirmation: 'pewpew')
+User.create(first_name: 'God', last_name: 'Mode', email: 'eftwenty@gmail.com', password: 'pewpew', password_confirmation: 'pewpew', work_variety_list: ['Admin'])
