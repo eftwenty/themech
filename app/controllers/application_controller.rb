@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       reset_session if current_user
       authenticate_customer!
     else
-      return
+      reset_session if params[:action] == 'new'
     end
   end
 end

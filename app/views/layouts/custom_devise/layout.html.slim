@@ -8,8 +8,8 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   body.nav-sm
-    = render 'layouts/header'
-    .container.container-custom
+    /= render 'layouts/header'
+    .container.container-custom style="width: 25%"
       = render 'layouts/flash'
       = yield
   /= render 'layouts/custom_devise/footer'

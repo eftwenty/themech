@@ -1,4 +1,5 @@
 h2 Change your password
+hr
 
 = simple_form_for(resource, as: resource_name, url: devise_password_path, html: { method: :put }) do |f|
   = f.error_notification
@@ -6,13 +7,11 @@ h2 Change your password
   = f.input :reset_password_token, as: :hidden
   = f.full_error :reset_password_token
 
-  .row
-    .col-md-4.col-sm-6.col-xs-12
-      .form-inputs
-        = f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
-        = f.input :password_confirmation, label: "Confirm your new password", required: true
+  .form-inputs
+    = f.input :password, label: "New password", required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+    = f.input :password_confirmation, label: "Confirm your new password", required: true
 
-      .form-actions
-        = f.button :submit, "Change my password"
+  .form-actions
+    = f.button :submit, "Change my password"
 
 = render "custom_devise/shared/links"

@@ -1,14 +1,13 @@
 h2 #{underscored_resource == 'user' ? 'Welcome!' : 'Log in'}
+hr
 
 = simple_form_for(resource, as: resource_name, url: devise_session_path) do |f|
-  .row
-    .col-md-4.col-sm-6.col-xs-12
-      .form-inputs
-        = f.input :email, required: false, autofocus: true
-        = f.input :password, required: false
-        = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+  .form-inputs
+    = f.input :email, required: false, autofocus: true
+    = f.input :password, required: false
+    = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
 
-      .form-actions
-        = f.button :submit, "Log in"
+  .form-actions
+    = f.button :submit, "Log in"
 
 = render "custom_devise/shared/links"
