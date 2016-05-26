@@ -4,7 +4,7 @@
       = f.input :name
       = f.input :variety_list, collection: Service::VARIETY, input_html: { class: 'select2-input', multiple: 'multiple' }, required: true, label: 'Variety'
       = f.input :man_hours, label: 'Man-hour', as: :string
-      = f.input :pending, as: :boolean, label: 'Pending?'
+      = f.input :pending, as: :boolean, label: 'Pending?', label_html: {class: 'has-tooltip', data: {toggle: 'tooltip', placement: 'right'}, title: 'Pending service won\'t be available for ordering.'}
 .row
   .col-md-8.col-sm-12.col-xs-12
     hr

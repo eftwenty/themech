@@ -63,9 +63,14 @@ Global =
     $('.dependent select, .dependent input').not('.select2-search__field').not("input[type='hidden']").each setupDependentFields
     $('.dependent select, .dependent input, select').not('.select2-search__field').not("input[type='hidden']").on 'change', setupDependentFields
 
+  initTooltips: ->
+    $('.has-tooltip').each ->
+      $(this).tooltip()
+
 $ ->
   Global.initSelect2()
   Global.initDatatables()
   Global.applyPhoneInputMasks()
   Global.initInputMasks()
   Global.initDependentFields()
+  Global.initTooltips()

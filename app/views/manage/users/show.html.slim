@@ -28,6 +28,11 @@
             = f.label :roles, required: false
           .col-xs-6.col-sm-6.col-md-6
             = @user.decorate.pretty_roles
+        .row
+          .col-xs-6.col-sm-6.col-md-6
+            = f.label :work_variety, required: false
+          .col-xs-6.col-sm-6.col-md-6
+            = @user.decorate.pretty_work_varieties
       .col-xs-12.col-sm-6.col-md-6
         - if @user.emails
           = section_header 'E-mail addresses'
