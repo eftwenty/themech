@@ -21,4 +21,8 @@ class UserDecorator < Draper::Decorator
   def pretty_work_varieties
     object.work_variety.map(&:name).join(', ')
   end
+
+  def phone_numbers
+    object.phones.map(&:number).join('<br/>')
+  end
 end

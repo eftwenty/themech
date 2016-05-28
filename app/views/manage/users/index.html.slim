@@ -12,6 +12,7 @@
         tr
           th Name
           th Email
+          th Phones
           th Roles
           th.text-right Actions
       tbody
@@ -19,6 +20,8 @@
           tr
             td #{user.decorate.pretty_name}
             td #{user.email}
+            td
+              == user.decorate.phone_numbers
             td #{user.decorate.pretty_roles}
             td.text-right
               => link_to 'Show', user_path(user)
