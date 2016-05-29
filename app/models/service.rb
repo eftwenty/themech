@@ -2,6 +2,8 @@ class Service < ActiveRecord::Base
   include Constants
   VARIETY = %w(Electricity Body Engine Etc)
 
+  has_and_belongs_to_many :orders
+
   before_validation :calculate_price
   before_update :service_changed, if: -> obj { obj.changed? }
   before_destroy :service_deleted

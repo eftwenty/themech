@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_many  :emails, as: :emailable, dependent: :destroy
   has_many  :phones, as: :phoneable, dependent: :destroy
+  has_and_belongs_to_many :orders
 
   accepts_nested_attributes_for :emails, allow_destroy: true
   accepts_nested_attributes_for :phones, allow_destroy: true

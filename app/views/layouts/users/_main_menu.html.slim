@@ -9,3 +9,10 @@
     = link_to services_path, class: "list-group-item #{get_active_for services_path}" do
       i.fa.fa-wrench.fa-lg.fa-fw>
       span Services
+    = link_to orders_path, class: "list-group-item #{get_active_for orders_path}" do
+      i.fa.fa-wrench.fa-lg.fa-fw>
+      span Orders
+      - if Order.pending.present?
+        span.badge.badge-warning
+          span> #{Order.pending.count}
+          i.fa.fa-exclamation

@@ -1,6 +1,4 @@
-class Clients::ServicesController < ApplicationController
-  layout 'customers/customer_layout'
-
+class Clients::ServicesController < Clients::BaseController
   def index
     @services = Service.available
   end

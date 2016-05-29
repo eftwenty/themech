@@ -9,7 +9,7 @@ module Constants
   MAKE = [
 		'ALFA ROMEO',
 		'AUDI',
-		'BENTLEY MOTORS',
+		'BENTLEY',
 		'BMW',
 		'CADILLAC',
 		'CHEVROLET',

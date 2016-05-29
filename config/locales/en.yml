@@ -27,6 +27,7 @@ en:
     deleted: "The %{instance} has been deleted."
     customers:
       updated: "Your profile has been updated successfully."
+      created_order: "Your order has been created. We'll let you know after it will be processed."
   prompts:
 #  TODO yep
 #    delete: "Are you sure you wanna delete this %{instance}?"

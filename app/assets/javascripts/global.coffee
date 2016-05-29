@@ -3,6 +3,7 @@ Global =
     $('.select2-input').each ->
       that = $(this)
       $(this).select2
+        placeholder: 'Please select...',
         allowClear: true,
       .on 'select2:unselecting', ->
         $(this).data('unselecting', true)
@@ -23,7 +24,10 @@ Global =
       $(this).inputmask '[+99] (999) 999-9999'
 
   initInputMasks: ->
-    $(document).on('click', 'a.add_fields', ( -> Global.applyPhoneInputMasks() ))
+    $(document).on('click', 'a.add_fields', ( ->
+      Global.applyPhoneInputMasks()
+      Global.initSelect2()
+    ))
 
   initDependentFields: =>
     setupDependentFields = ->

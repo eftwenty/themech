@@ -15,7 +15,9 @@
       tbody
         - @customers.each do |customer|
           tr
-            td #{customer.decorate.pretty_name}
+            td
+              =' customer.decorate.pretty_name
+              == customer.decorate.order_counts
             td #{customer.decorate.pretty_status}
             td #{format_value(customer.completed, :boolean)}
             td #{customer.email}

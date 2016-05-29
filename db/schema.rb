@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160509152100) do
+ActiveRecord::Schema.define(version: 20160529212452) do
 
   create_table "customers", force: :cascade do |t|
     t.string   "first_name",             limit: 255
@@ -46,6 +46,34 @@ ActiveRecord::Schema.define(version: 20160509152100) do
   end
 
   add_index "emails", ["emailable_type", "emailable_id"], name: "index_emails_on_emailable_type_and_emailable_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "customer_id", limit: 4
+    t.string   "make",        limit: 255
+    t.string   "model",       limit: 255
+    t.string   "status",      limit: 255
+    t.decimal  "total_price",             precision: 10
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "orders", ["status"], name: "index_orders_on_status", using: :btree
+
+  create_table "orders_services", id: false, force: :cascade do |t|
+    t.integer "order_id",   limit: 4
+    t.integer "service_id", limit: 4
+  end
+
+  add_index "orders_services", ["order_id"], name: "index_orders_services_on_order_id", using: :btree
+  add_index "orders_services", ["service_id"], name: "index_orders_services_on_service_id", using: :btree
+
+  create_table "orders_users", id: false, force: :cascade do |t|
+    t.integer "order_id", limit: 4
+    t.integer "user_id",  limit: 4
+  end
+
+  add_index "orders_users", ["order_id"], name: "index_orders_users_on_order_id", using: :btree
+  add_index "orders_users", ["user_id"], name: "index_orders_users_on_user_id", using: :btree
 
   create_table "phones", force: :cascade do |t|
     t.string  "number",         limit: 255

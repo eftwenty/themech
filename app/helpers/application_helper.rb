@@ -10,14 +10,6 @@ module ApplicationHelper
     end
   end
 
-  def get_vehicle_models(brand)
-    begin
-      "VehicleModels::#{brand.gsub(/[^A-z0-9]/, '_')}".constantize.sort
-    rescue NameError
-      []
-    end
-  end
-
   ### Active page
   def get_active_for path
     'active gradientable' if current_page?(path)

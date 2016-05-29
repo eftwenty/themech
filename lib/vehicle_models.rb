@@ -1,5 +1,5 @@
 module VehicleModels
-  ALPHA_ROMEO = [
+  ALFA_ROMEO = [
       '4C',
       '4C Spider',
       'Giulietta',

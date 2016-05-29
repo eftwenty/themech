@@ -1,8 +1,4 @@
-class Clients::CustomersController < ApplicationController
-  layout 'customers/customer_layout'
-
-  before_action :check_current_customer
-  before_filter :get_current_customer
+class Clients::CustomersController < Clients::BaseController
 
   def show
   end
@@ -26,15 +22,5 @@ class Clients::CustomersController < ApplicationController
         emails_attributes: [:id, :address, :_destroy],
         phones_attributes: [:id, :number, :primary, :_destroy]
     )
-  end
-
-  def get_current_customer
-    @customer = current_customer
-  end
-
-  def check_current_customer
-    unless current_customer
-      redirect_to new_customer_session_path, notice: t('devise.failure.unauthenticated')
-    end
   end
 end

@@ -17,4 +17,11 @@ class CustomerDecorator < Draper::Decorator
   def pretty_status
     object.active? ? 'Active' : 'Inactive'
   end
+
+  def order_counts
+    pending = "<span class='badge'>#{object.orders.pending.count}</span>"
+    in_progress = "<span class='badge badge-blue'>#{object.orders.in_progress.count}</span>"
+
+    [pending, in_progress].join(' ')
+  end
 end
