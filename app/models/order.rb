@@ -17,7 +17,11 @@ class Order < ActiveRecord::Base
   before_create do
     self.status = 'Pending'
     self.overall_variety_list = self.services.map(&:variety_list).flatten.uniq
+  end
+
+  after_create do
     self.total_price = self.services.sum(:price)
+    self.save
   end
 
   validates_presence_of :make, :model

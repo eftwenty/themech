@@ -3,8 +3,9 @@
 .page-header
   h1
     | Services list
-    span
-      = link_to 'Create order', new_booking_path, class: 'btn btn-success pull-right'
+    - if @customer.completed?
+      span
+        = link_to 'Create order', new_booking_path, class: 'btn btn-success pull-right'
 .content
   - if @services
     table#dataTable.responsive

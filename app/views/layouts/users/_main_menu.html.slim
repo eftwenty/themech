@@ -3,12 +3,10 @@
     = link_to customers_path, class: "list-group-item #{get_active_for customers_path}" do
       i.fa.fa-suitcase.fa-lg.fa-fw>
       span Customers
-    = link_to users_path, class: "list-group-item #{get_active_for users_path}" do
-      i.fa.fa-user.fa-lg.fa-fw>
-      span Users
-    = link_to services_path, class: "list-group-item #{get_active_for services_path}" do
-      i.fa.fa-wrench.fa-lg.fa-fw>
-      span Services
+      - if customers = Customer.where(created_at: Time.current.beginning_of_day..Time.current.end_of_day).presence
+        span.badge.badge-green
+          span> #{customers.count}
+          i.fa.fa-thumbs-up
     = link_to orders_path, class: "list-group-item #{get_active_for orders_path}" do
       i.fa.fa-wrench.fa-lg.fa-fw>
       span Orders
@@ -16,3 +14,9 @@
         span.badge.badge-warning
           span> #{Order.pending.count}
           i.fa.fa-exclamation
+    = link_to services_path, class: "list-group-item #{get_active_for services_path}" do
+      i.fa.fa-wrench.fa-lg.fa-fw>
+      span Services
+    = link_to users_path, class: "list-group-item #{get_active_for users_path}" do
+      i.fa.fa-user.fa-lg.fa-fw>
+      span Users

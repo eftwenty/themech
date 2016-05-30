@@ -12,17 +12,17 @@
         tr
           th Name
           th Email
-          th Phones
           th Roles
+          th Phones
           th.text-right Actions
       tbody
         - @users.each do |user|
           tr
             td #{user.decorate.pretty_name}
             td #{user.email}
+            td #{user.decorate.pretty_roles}
             td
               == user.decorate.phone_numbers
-            td #{user.decorate.pretty_roles}
             td.text-right
               => link_to 'Show', user_path(user)
               - if current_user.role_list.include?('Admin')

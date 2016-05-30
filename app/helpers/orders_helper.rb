@@ -7,4 +7,17 @@ module OrdersHelper
       []
     end
   end
+
+  def get_status_style o
+    case o.status
+      when 'Canceled'
+        '-danger'
+      when 'In progress'
+        '-info'
+      when 'Completed'
+        '-success'
+      else
+        '-default'
+    end
+  end
 end

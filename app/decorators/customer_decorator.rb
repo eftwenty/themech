@@ -19,9 +19,13 @@ class CustomerDecorator < Draper::Decorator
   end
 
   def order_counts
-    pending = "<span class='badge'>#{object.orders.pending.count}</span>"
-    in_progress = "<span class='badge badge-blue'>#{object.orders.in_progress.count}</span>"
+    pending = "<span class='badge'>#{ApplicationController.helpers.pluralize(object.orders.pending.count, 'pending order')}</span>" if object.orders.pending.present?
+    in_progress = "<span class='badge badge-blue'>#{ApplicationController.helpers.pluralize(object.orders.in_progress.count, 'order')} in progress</span>" if object.orders.in_progress.present?
 
-    [pending, in_progress].join(' ')
+    [pending, in_progress].join('<br/>')
+  end
+
+  def phone_numbers
+    object.phones.map(&:number).join('<br/>')
   end
 end

@@ -10,19 +10,30 @@
           th Name
           th Status
           th Able to create orders
+          th Total ordered
+          th Discount
           th Email
+          th Phone numbers
           th.text-right Actions
       tbody
         - @customers.each do |customer|
           tr
             td
               =' customer.decorate.pretty_name
+              br
               == customer.decorate.order_counts
             td #{customer.decorate.pretty_status}
             td #{format_value(customer.completed, :boolean)}
+            td #{format_value customer.total_ordered, :money}
+            td #{customer.discount.nil? ? 'None' : number_to_percentage(customer.discount)}
             td #{customer.email}
+            td
+              == customer.decorate.phone_numbers
             td.text-right
-              /=> link_to 'Show', customer_path(customer)
+              => link_to 'Profile', customer_path(customer.id)
+              - if customer.orders.present?
+                ' |
+                => link_to 'View orders', orders_path(customer_id: customer.id)
               /' |
               /=> link_to 'Edit', edit_customer_path(customer)
               /' |

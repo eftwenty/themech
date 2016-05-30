@@ -10,9 +10,10 @@
         tr
           th #
           th Customer
-          th Date
+          th Creation date
           th Status
           th Variety
+          th Price
           th.text-right Actions
       tbody
         - @orders.each do |order|
@@ -20,8 +21,10 @@
             td ##{order.id}
             td #{order.customer.decorate.pretty_name}
             td #{format_value order.created_at, :time}
-            td #{order.status}
+            td
+              span class="label label#{get_status_style(order)}" #{order.status}
             td #{order.decorate.pretty_variety}
+            td #{format_value order.total_price, :money}
             td.text-right
               /=> link_to 'Show', user_path(user)
               /- if current_user.role_list.include?('Admin')

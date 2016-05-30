@@ -10,7 +10,7 @@ Rails.application.routes.draw do
                }
 
     resources :users
-    resources :customers, only: [:index]
+    resources :customers, only: [:index, :show]
     resources :services
     resources :orders, only: [:index, :show], shallow: true
   end
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
                }
     resources :customers, as: :clients, only: [:show, :edit, :update]
     resources :services, as: :available_services, only: [:index]
-    resources :orders, as: :bookings, only: [:show, :new, :create], shallow: true
+    resources :orders, as: :bookings, only: [:index, :show, :new, :create], shallow: true
   end
   resources :home, only: [:index]
 

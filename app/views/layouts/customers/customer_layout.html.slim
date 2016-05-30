@@ -11,5 +11,7 @@ html
     = render 'layouts/header'
     .container.container-custom
       = render 'layouts/flash'
+      - unless @customer.completed
+        = render 'layouts/customers/profile_warning'
       = yield
   /= render 'layouts/customers/customer_footer'

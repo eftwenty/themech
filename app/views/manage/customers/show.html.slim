@@ -1,10 +1,7 @@
 .page-header
-  h1> User Profile
-  span
-    i.small
-      = link_to 'Edit', edit_user_path(@user)
+  h1> Customer Profile
 .content
-  = simple_form_for @user, url: user_path do |f|
+  = simple_form_for @customer, url: customer_path do |f|
     .row
       .col-xs-12.col-sm-6.col-md-6
         = section_header 'Personal info'
@@ -12,32 +9,41 @@
           .col-xs-6.col-sm-6.col-md-6
             = f.label :first_name, required: false
           .col-xs-6.col-sm-6.col-md-6
-            = @user.first_name
+            = @customer.first_name
         .row
           .col-xs-6.col-sm-6.col-md-6
             = f.label :last_name, required: false
           .col-xs-6.col-sm-6.col-md-6
-            = @user.last_name
+            = @customer.last_name
         .row
           .col-xs-6.col-sm-6.col-md-6
             = f.label :primary_email, required: false
           .col-xs-6.col-sm-6.col-md-6
-            = @user.email
+            = @customer.email
         .row
           .col-xs-6.col-sm-6.col-md-6
-            = f.label :roles, required: false
+            = f.label :status, required: false
           .col-xs-6.col-sm-6.col-md-6
-            = @user.decorate.pretty_roles
-        - if @user.role_list.include? 'Worker'
-          .row
-            .col-xs-6.col-sm-6.col-md-6
-              = f.label :work_variety, required: false
-            .col-xs-6.col-sm-6.col-md-6
-              = @user.decorate.pretty_work_varieties
+            = @customer.decorate.pretty_status
+        .row
+          .col-xs-6.col-sm-6.col-md-6
+            = f.label :profile_completed?, required: false
+          .col-xs-6.col-sm-6.col-md-6
+            = format_value @customer.completed, :boolean
+        .row
+          .col-xs-6.col-sm-6.col-md-6
+            = f.label :total_ordered, required: false
+          .col-xs-6.col-sm-6.col-md-6
+            = format_value @customer.total_ordered, :money
+        .row
+          .col-xs-6.col-sm-6.col-md-6
+            = f.label :discount, required: false
+          .col-xs-6.col-sm-6.col-md-6
+            = @customer.discount.nil? ? 'None' : number_to_percentage(@customer.discount)
       .col-xs-12.col-sm-6.col-md-6
         = section_header 'E-mail addresses'
-        - if @user.emails.present?
-          - @user.emails.each do |email|
+        - if @customer.emails.present?
+          - @customer.emails.each do |email|
             .row
               .col-xs-6.col-sm-6.col-md-6
                 = f.label :email, required: false
@@ -46,11 +52,11 @@
         - else
           .alert.alert-warning
             i.fa.fa-exclamation.fa-lg.fa-fw>
-            span User hasn't any contact e-mail address
-          hr
+            span Customer hasn't any contact e-mail address
+        hr
         = section_header 'Phone numbers'
-        - if @user.phones.present?
-          - @user.phones.order('phones.primary desc').each do |phone|
+        - if @customer.phones.present?
+          - @customer.phones.order('phones.primary desc').each do |phone|
             .row
               .col-xs-6.col-sm-6.col-md-6
                 = f.label (phone.primary? ? :primary_phone_number : :phone_number), required: false
@@ -59,4 +65,4 @@
         - else
           .alert.alert-warning
             i.fa.fa-exclamation.fa-lg.fa-fw>
-            span User hasn't any contact phone
+            span Customer hasn't any contact phone

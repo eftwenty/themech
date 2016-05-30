@@ -9,6 +9,10 @@
           = link_to available_services_path do
             i.fa.fa-wrench.fa-lg.fa-fw>
             span Services
+        li
+          = link_to bookings_path do
+            i.fa.fa-list.fa-lg.fa-fw>
+            span My orders
     - if current_logged_in.present?
       ul.nav.navbar-nav.pull-right
         li.dropdown
@@ -22,6 +26,12 @@
                 = link_to client_path(current_customer) do
                   i.fa.fa-user.fa-fw>
                   span Profile
+            - else
+              li
+                = link_to user_path(current_user) do
+                  i.fa.fa-user.fa-fw>
+                  span Profile
+            li.divider
             li
               = link_to devise_log_out_path, method: :delete do
                 i.fa.fa-power-off.fa-fw>

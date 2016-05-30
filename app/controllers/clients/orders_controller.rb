@@ -1,5 +1,9 @@
 class Clients::OrdersController < Clients::BaseController
 
+  def index
+    @orders = Order.where(customer_id: current_customer.id).order(status: :desc)
+  end
+
   def show
     @order = Order.find_by_id(params[:id])
   end
