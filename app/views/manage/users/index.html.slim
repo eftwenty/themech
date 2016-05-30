@@ -13,6 +13,10 @@
           th Name
           th Email
           th Roles
+          th
+            ' Status
+            em
+              | (only for workers)
           th Phones
           th.text-right Actions
       tbody
@@ -21,6 +25,7 @@
             td #{user.decorate.pretty_name}
             td #{user.email}
             td #{user.decorate.pretty_roles}
+            td #{user.status}
             td
               == user.decorate.phone_numbers
             td.text-right

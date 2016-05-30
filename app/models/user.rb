@@ -29,6 +29,12 @@ class User < ActiveRecord::Base
 
   after_create :created_notification
 
+  before_create do
+    if self.role_list.include?('Worker')
+      self.status = 'Free'
+    end
+  end
+
   ### Helper methods
 
   def admin?

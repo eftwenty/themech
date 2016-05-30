@@ -16,7 +16,7 @@ class Manage::UsersController < ApplicationController
   end
 
   def create
-    @user = User.new user_params
+    @user = User.new user_create_params
 
     if @user.save
       redirect_to(users_path, notice: t('notifications.created', instance: 'user'))
@@ -55,6 +55,14 @@ class Manage::UsersController < ApplicationController
   def user_params
     params.require(:user).permit(
         :first_name, :last_name, :email, role_list: [], work_variety_list: [],
+        emails_attributes: [:id, :address, :_destroy],
+        phones_attributes: [:id, :number, :primary, :_destroy]
+    )
+  end
+
+  def user_create_params
+    params.require(:user).permit(
+        :first_name, :last_name, :email, :password, :password_confirmation, role_list: [], work_variety_list: [],
         emails_attributes: [:id, :address, :_destroy],
         phones_attributes: [:id, :number, :primary, :_destroy]
     )

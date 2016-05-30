@@ -9,6 +9,12 @@
         = f.input :role_list, collection: (User.role_exists?('Admin') ? User::ROLES_WITHOUT_ADMIN : User::ROLES), input_html: { class: 'select2-input', multiple: true }
         .box{data = {show_if: 'Worker'}}
           = f.input :work_variety_list, collection: Service::VARIETY, input_html: { class: 'select2-input', multiple: true }
+    - if %w(new create).include? params[:action]
+      hr
+      = section_header 'Security'
+      .form-group
+        = f.input :password
+        = f.input :password_confirmation
   .col-md-8.col-sm-8.col-xs-12
     = section_header 'Contact information'
     .col-md-6.col-sm-6.col-xs-12

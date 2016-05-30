@@ -1,0 +1,61 @@
+.page-header
+  h1
+    span.pull-left Order from #{format_value @order.created_at, :date}
+    small
+      | (Placed at #{format_value @order.created_at, :only_time})
+    span.pull-right
+      = link_to "#{@customer.decorate.pretty_name}", customer_path(@customer.id)
+  span class="label label#{get_status_style(@order)}" #{@order.status}
+.content
+  = simple_form_for @order, url: booking_path do |f|
+    .row
+      .col-xs-12.col-sm-6.col-md-6
+        = section_header 'Vehicle info'
+        .row
+          .col-xs-6.col-sm-6.col-md-6
+            = f.label :make, required: false
+          .col-xs-6.col-sm-6.col-md-6
+            = @order.make
+        .row
+          .col-xs-6.col-sm-6.col-md-6
+            = f.label :model, required: false
+          .col-xs-6.col-sm-6.col-md-6
+            = @order.model
+      .col-xs-12.col-sm-6.col-md-6
+        = section_header 'Services info'
+        - @order.services.each do |service|
+          .row
+            .col-xs-6.col-sm-6.col-md-6
+              = f.label :service, required: false
+            .col-xs-6.col-sm-6.col-md-6
+              em
+                strong> #{service.name}
+                span
+                  ' (
+                  => service.man_hours
+                  ' /
+                  => format_value(service.price, :money)
+                  ' )
+    hr
+    .row
+      .col-xs-12.col-sm-6.col-md-6
+        - if @order.users.present?
+          h4 Responsible
+          - @order.users.each do |user|
+            .row
+              .col-xs-6.col-sm-6.col-md-6
+                = f.label :user_name, required: false
+              .col-xs-6.col-sm-6.col-md-6
+                =' user.decorate.pretty_name
+                span
+                  em
+                    br
+                    == user.decorate.phone_numbers
+          hr
+    .row.text-right
+      .col-xs-12.col-sm-12.col-md-12
+        h4
+          strong
+            em Total price
+        strong
+          em style="font-size: 18px" #{format_value @order.total_price, :money}

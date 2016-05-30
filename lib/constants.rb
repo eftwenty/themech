@@ -4,6 +4,12 @@ module Constants
   PHONE_NUMBER_REGEX = /\A^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$\z/
 
   ### Constants
+  USER_STATUS = [
+      'Free',
+      'Busy (CBA)',
+      'Busy',
+  ]
+
   MAN_HOUR_PRICE = 10
 
   MAKE = [
