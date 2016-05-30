@@ -27,5 +27,6 @@ Rails.application.routes.draw do
   end
   resources :home, only: [:index]
 
-  post 'get_model', to: 'make_model#index'
+  post '/get_model', to: 'make_model#index'
+  post '/calculate_price', to: 'price#index'
 end

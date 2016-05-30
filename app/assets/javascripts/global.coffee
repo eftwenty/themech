@@ -5,6 +5,7 @@ Global =
       $(this).select2
         placeholder: 'Please select...',
         allowClear: true,
+      .trigger 'change'
       .on 'select2:unselecting', ->
         $(this).data('unselecting', true)
       .on 'select2:opening', (e) ->

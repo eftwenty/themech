@@ -8,6 +8,20 @@ module OrdersHelper
     end
   end
 
+  def get_status_icon o
+    icon = 'fa fa-fw'
+    icon += case o.status
+              when 'Canceled'
+                ' fa-ban'
+              when 'In progress'
+                ' fa-spinner fa-spin'
+              when 'Completed'
+                ' fa-check'
+              else
+                ' fa-circle-o'
+            end
+  end
+
   def get_status_style o
     case o.status
       when 'Canceled'

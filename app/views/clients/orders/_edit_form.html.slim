@@ -1,16 +1,21 @@
 .row
-  .col-md-4.col-sm-6.col-xs-12
+  .col-md-4.col-sm-4.col-xs-12
     .form-group
       = section_header 'Vehicle information'
       = f.input :make, collection: Constants::MAKE, input_html: { class: 'select2-input', id: 'make-selector' }, include_blank: true
       = f.input :model, collection: [], input_html: { class: 'select2-input', id: 'model-selector', disabled: true }, include_blank: true
-  .col-md-4.col-sm-6.col-xs-12
+  .col-md-4.col-sm-4.col-xs-12
     .form-group
       = section_header 'Services'
       = f.simple_fields_for :services do |ff|
         = render partial: 'clients/orders/service_fields', locals: {f: ff}
       .links
         = link_to_add_association 'Add service', f, :services
+  .col-md-4.col-sm-4.col-xs-12
+    .form-group
+      = section_header 'Total price'
+      span#price
+
 .row
   .col-md-8.col-sm-12.col-xs-12
     hr

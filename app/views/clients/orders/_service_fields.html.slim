@@ -1,4 +1,4 @@
 .nested-fields
-  = f.input :id, collection: Service.available.map {|service| [service.name, service.id]}, label: 'Service type', input_html: { class: 'select2-input' }
+  = f.input :id, collection: Service.available.map {|service| [service.name, service.id]}, label: 'Service type', input_html: { class: 'select2-input service-select' }
   = link_to_remove_association 'Remove service', f
   hr

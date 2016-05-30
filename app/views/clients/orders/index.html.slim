@@ -5,6 +5,11 @@
     .list-group
       - @orders.each do |order|
         = link_to booking_path(order.id), class: "list-group-item list-group-item#{get_status_style(order)}" do
+          i> class="#{get_status_icon(order)}"
           span Order from #{format_value order.created_at, :date}
           span style="float: right"
             em From #{format_value(order.created_at, :only_time)}
+  - else
+    .alert.alert-info
+      i.fa.fa-exclamation-circle.fa-2x.fa-fw>
+      span Your orders list is empty. Check this page when any order has been placed.
