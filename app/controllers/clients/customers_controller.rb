@@ -18,7 +18,7 @@ class Clients::CustomersController < Clients::BaseController
 
   def update_params
     params.require(:customer).permit(
-        :first_name, :last_name, :email,
+        :first_name, :last_name, :email, :gender,
         emails_attributes: [:id, :address, :_destroy],
         phones_attributes: [:id, :number, :primary, :_destroy]
     )

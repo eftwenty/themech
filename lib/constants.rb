@@ -3,7 +3,7 @@ module Constants
   ALPHA_REGEX = /\A^[A-z ]+$\z/
   PHONE_NUMBER_REGEX = /\A^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$\z/
 
-  ### Constants
+  ### Types
   USER_STATUS = %w(Free Busy)
 
   ORDER_STATUS = [
@@ -12,6 +12,8 @@ module Constants
       'In progress',
       'Completed',
   ]
+
+  GENDER = %w(Male Female)
 
   MAN_HOUR_PRICE = 10
 

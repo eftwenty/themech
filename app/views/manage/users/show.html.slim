@@ -1,8 +1,12 @@
 .page-header
-  h1> User Profile
-  span
-    i.small
-      = link_to 'Edit', edit_user_path(@user)
+  .pull-left
+    h1> User Profile
+    span
+      i.small
+        = link_to 'Edit', edit_user_path(@user)
+  .pull-right
+    i class="#{gender_icon(@user)}"
+  .clearfix
 .content
   = simple_form_for @user, url: user_path do |f|
     .row
@@ -51,7 +55,7 @@
         - else
           .alert.alert-warning
             i.fa.fa-exclamation.fa-lg.fa-fw>
-            span User hasn't any contact e-mail address
+            span User hasn't any contact e-mail address.
           hr
         = section_header 'Phone numbers'
         - if @user.phones.present?
@@ -64,4 +68,4 @@
         - else
           .alert.alert-warning
             i.fa.fa-exclamation.fa-lg.fa-fw>
-            span User hasn't any contact phone
+            span User hasn't any contact phone.

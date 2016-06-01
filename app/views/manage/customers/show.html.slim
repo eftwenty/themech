@@ -1,5 +1,9 @@
 .page-header
-  h1> Customer Profile
+  .pull-left
+    h1> Customer Profile
+  .pull-right
+    i class="#{gender_icon(@customer)}"
+  .clearfix
 .content
   = simple_form_for @customer, url: customer_path do |f|
     .row
@@ -52,7 +56,7 @@
         - else
           .alert.alert-warning
             i.fa.fa-exclamation.fa-lg.fa-fw>
-            span Customer hasn't any contact e-mail address
+            span Customer hasn't any contact e-mail address.
         hr
         = section_header 'Phone numbers'
         - if @customer.phones.present?
@@ -65,4 +69,4 @@
         - else
           .alert.alert-warning
             i.fa.fa-exclamation.fa-lg.fa-fw>
-            span Customer hasn't any contact phone
+            span Customer hasn't any contact phone.

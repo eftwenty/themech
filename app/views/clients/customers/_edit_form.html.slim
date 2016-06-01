@@ -5,6 +5,7 @@
       = f.input :first_name, required: true, placeholder: t('users_controller.placeholders.first_name')
       = f.input :last_name, required: true, placeholder: t('users_controller.placeholders.last_name')
       = f.input :email, required: true, placeholder: t('users_controller.placeholders.email')
+      = f.input :gender, collection: Constants::GENDER, input_html: { class: 'select2-input' }
   .col-md-8.col-sm-8.col-xs-12
     = section_header 'Contact information'
     .col-md-6.col-sm-6.col-xs-12

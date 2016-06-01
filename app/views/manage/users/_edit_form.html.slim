@@ -5,6 +5,7 @@
       = f.input :first_name, placeholder: t('users_controller.placeholders.first_name')
       = f.input :last_name, placeholder: t('users_controller.placeholders.last_name')
       = f.input :email, placeholder: t('users_controller.placeholders.email')
+      = f.input :gender, collection: Constants::GENDER, input_html: { class: 'select2-input' }
       .dependent
         = f.input :role_list, collection: (User.role_exists?('Admin') ? User::ROLES_WITHOUT_ADMIN : User::ROLES), input_html: { class: 'select2-input', multiple: true }
         .box{data = {show_if: 'Worker'}}

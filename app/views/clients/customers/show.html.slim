@@ -1,8 +1,12 @@
 .page-header
-  h1> Your Profile
-  span
-    i.small
-      = link_to 'Update', edit_client_path(@customer)
+  .pull-left
+    h1> Your Profile
+    span
+      i.small
+        = link_to 'Update', edit_client_path(@customer)
+  .pull-right
+    i class="#{gender_icon(@customer)}"
+  .clearfix
 .content
   = simple_form_for @customer, url: client_path do |f|
     .row
@@ -29,20 +33,28 @@
           .col-xs-6.col-sm-6.col-md-6
             = format_value @customer.completed, :boolean
       .col-xs-12.col-sm-6.col-md-6
-        - if @customer.emails
-          = section_header 'E-mail addresses'
+        = section_header 'E-mail addresses'
+        - if @customer.emails.present?
           - @customer.emails.each do |email|
             .row
               .col-xs-6.col-sm-6.col-md-6
-                = f.label :email_address, required: false
+                = f.label :email, required: false
               .col-xs-6.col-sm-6.col-md-6
                 = email.address
-          hr
-        - if @customer.phones
-          = section_header 'Phone numbers'
+        - else
+          .alert.alert-warning
+            i.fa.fa-exclamation.fa-lg.fa-fw>
+            span You have not any contact e-mail address. It would be better to fill this information.
+        hr
+        = section_header 'Phone numbers'
+        - if @customer.phones.present?
           - @customer.phones.order('phones.primary desc').each do |phone|
             .row
               .col-xs-6.col-sm-6.col-md-6
                 = f.label (phone.primary? ? :primary_phone_number : :phone_number), required: false
               .col-xs-6.col-sm-6.col-md-6
                 = phone.number
+        - else
+          .alert.alert-warning
+            i.fa.fa-exclamation.fa-lg.fa-fw>
+            span You have not any contact phone. It would be better to fill this information.

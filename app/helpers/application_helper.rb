@@ -10,12 +10,23 @@ module ApplicationHelper
     end
   end
 
+  def gender_icon person
+    case person.gender
+      when 'Male'
+        icon = 'fa fa-male fa-5x fa-fw'
+      when 'Female'
+        icon = 'fa fa-female fa-5x fa-fw'
+      else
+        icon = 'fa fa-question fa-5x fa-fw'
+    end
+
+    icon
+  end
+
   ### Active page
   def get_active_for path
     'active gradientable' if current_page?(path)
   end
-
-
 
   ### Current logged in person
   def current_logged_in
