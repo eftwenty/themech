@@ -10,6 +10,8 @@ class PriceController < ApplicationController
             price += Service.find_by_id(id).price
           end
         end
+
+        price = price * (1 - current_customer.discount / 100)
         render json: {
             success: true,
             price: "#{price.to_f}"

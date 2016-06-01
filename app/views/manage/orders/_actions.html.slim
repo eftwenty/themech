@@ -1,0 +1,5 @@
+.btn-group.btn-group-sm role="group" aria-label="..."
+  = link_to 'Make pending', order_make_pending_path(@order), method: :post, class: 'btn btn-default' unless %w(Pending Completed).include?(@order.status)
+  = link_to 'Cancel', order_cancel_path(@order), method: :post, class: 'btn btn-danger' unless %w(Completed Canceled).include?(@order.status)
+  = link_to 'Accept', order_accept_path(@order), method: :post, class: 'btn btn-info' if @order.status == 'Pending'
+  = link_to 'Complete', order_complete_path(@order), method: :post, class: 'btn btn-success' if @order.status == 'In progress'

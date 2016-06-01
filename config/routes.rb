@@ -12,7 +12,12 @@ Rails.application.routes.draw do
     resources :users
     resources :customers, only: [:index, :show]
     resources :services
-    resources :orders, only: [:index, :show], shallow: true
+    resources :orders, only: [:index, :show], shallow: true do
+      post '/accept', to: 'orders_workflow#accept'
+      post '/cancel', to: 'orders_workflow#cancel'
+      post '/complete', to: 'orders_workflow#complete'
+      post '/make_pending', to: 'orders_workflow#make_pending'
+    end
   end
   namespace :clients, as: nil do
     devise_for :customers,

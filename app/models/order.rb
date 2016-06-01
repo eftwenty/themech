@@ -24,6 +24,57 @@ class Order < ActiveRecord::Base
     self.save
   end
 
-  validates_presence_of :make, :model
+  after_save :update_discounts, if: -> obj { obj.status == 'Completed' }
 
+  validates_presence_of :make, :model
+  validates_inclusion_of :status, in: Constants::ORDER_STATUS, if: -> obj { !obj.new_record? }
+
+  def workers_autoselect
+    variety_list = self.overall_variety_list
+    variety_list_size = variety_list.size
+    applied_workers = []
+
+    ### Find free workers
+    workers = User.where(status: 'Free').workers
+
+    ### Match workers and assign to order
+    (variety_list_size + 1).downto(1) do
+      w = (workers.select{|u| (variety_list & u.work_variety_list).size == variety_list_size} - applied_workers).first
+
+      if w.present?
+        applied_workers << w
+        same = variety_list & w.work_variety_list
+        variety_list -= same
+      end
+
+      break if variety_list.size == 0
+
+      variety_list_size -= 1
+    end
+
+    {workers: applied_workers, cant_be_completed: variety_list}
+  end
+
+  def release_workers
+    self.users.each do |user|
+      user.update(status: 'Free') if user.orders.select{|o| o.id != self.id}.present?
+    end
+  end
+
+  def update_discounts
+    ordered = customer.total_ordered
+    ordered = 0 if ordered.nil?
+
+    ordered += total_price
+
+    if ordered <= 30000
+      discount = 3
+    elsif ordered > 30000 && ordered <= 100000
+      discount = 5
+    else
+      discount = 7
+    end
+
+    customer.update(total_ordered: ordered, discount: discount)
+  end
 end

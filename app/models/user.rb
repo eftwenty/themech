@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :phones, allow_destroy: true
   acts_as_taggable_on :roles, :work_variety
 
+  ### Scopes
+
+  scope :workers, -> { select{|user| user.role_list.include?('Worker')} }
+
   ### Validations
 
   validates_format_of :email, with: Email::EMAIL_REGEX
@@ -29,11 +33,8 @@ class User < ActiveRecord::Base
 
   after_create :created_notification
 
-  before_create do
-    if self.role_list.include?('Worker')
-      self.status = 'Free'
-    end
-  end
+  before_create :set_status
+  before_update :set_status
 
   ### Helper methods
 
@@ -43,6 +44,14 @@ class User < ActiveRecord::Base
 
   def self.role_exists? *roles
     tagged_with(roles).present?
+  end
+
+  def set_status
+    if self.role_list.include?('Worker')
+      self.status = 'Free'
+    else
+      self.status = nil
+    end
   end
 
   ### Callbacks

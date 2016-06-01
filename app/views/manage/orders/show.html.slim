@@ -5,7 +5,10 @@
       | (Placed at #{format_value @order.created_at, :only_time})
     span.pull-right
       = link_to "#{@customer.decorate.pretty_name}", customer_path(@customer.id)
-  span class="label label#{get_status_style(@order)}" #{@order.status}
+  span class="label label#{get_status_style(@order)} pull-left" #{@order.status}
+  span.pull-right
+    = render partial: 'manage/orders/actions'
+  .clearfix
 .content
   = simple_form_for @order, url: booking_path do |f|
     .row
@@ -23,6 +26,11 @@
             = @order.model
       .col-xs-12.col-sm-6.col-md-6
         = section_header 'Services info'
+        .row
+          .col-xs-6.col-sm-6.col-md-6
+            = f.label :work_list, required: false
+          .col-xs-6.col-sm-6.col-md-6
+            = @order.decorate.pretty_variety
         - @order.services.each do |service|
           .row
             .col-xs-6.col-sm-6.col-md-6
