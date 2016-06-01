@@ -1,6 +1,6 @@
 class Service < ActiveRecord::Base
   include Constants
-  VARIETY = %w(Electricity Body Engine Etc)
+  VARIETY = %w(Body Engine Chassis Tires Electricity Etc)
 
   has_and_belongs_to_many :orders
 
