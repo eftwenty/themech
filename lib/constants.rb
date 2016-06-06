@@ -15,7 +15,7 @@ module Constants
 
   GENDER = %w(Male Female)
 
-  MAN_HOUR_PRICE = 10
+  MAN_HOUR_PRICE = 25
 
   MAKE = [
 		'ALFA ROMEO',

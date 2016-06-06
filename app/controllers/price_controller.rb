@@ -11,7 +11,7 @@ class PriceController < ApplicationController
           end
         end
 
-        price = price * (1 - current_customer.discount / 100)
+        price = price * (1 - current_customer.discount / 100) if current_customer.discount.present?
         render json: {
             success: true,
             price: "#{price.to_f}"

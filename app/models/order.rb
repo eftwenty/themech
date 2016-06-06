@@ -67,12 +67,14 @@ class Order < ActiveRecord::Base
 
     ordered += total_price
 
-    if ordered <= 30000
+    if ordered >= 30000 && ordered <= 50000
       discount = 3
-    elsif ordered > 30000 && ordered <= 100000
+    elsif ordered > 50000 && ordered <= 100000
       discount = 5
-    else
+    elsif ordered > 100000
       discount = 7
+    else
+      discount = 0
     end
 
     customer.update(total_ordered: ordered, discount: discount)

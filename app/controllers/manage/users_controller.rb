@@ -62,7 +62,7 @@ class Manage::UsersController < ApplicationController
 
   def user_create_params
     params.require(:user).permit(
-        :first_name, :last_name, :email, :password, :password_confirmation, role_list: [], work_variety_list: [],
+        :first_name, :last_name, :email, :gender, :password, :password_confirmation, role_list: [], work_variety_list: [],
         emails_attributes: [:id, :address, :_destroy],
         phones_attributes: [:id, :number, :primary, :_destroy]
     )

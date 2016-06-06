@@ -10,9 +10,11 @@ class Email < ActiveRecord::Base
   validate :uniq
 
   def uniq
-    emailable_class = emailable.class.to_s.classify.constantize
-    if emailable_class.where(email: address).present?
-      errors.add(:address, :uniq)
+    if emailable
+      emailable_class = emailable.class.to_s.classify.constantize
+      if emailable_class.all.present? && emailable_class.where(email: address).present?
+        errors.add(:address, :uniq)
+      end
     end
   end
 end

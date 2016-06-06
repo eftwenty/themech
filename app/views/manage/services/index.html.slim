@@ -23,7 +23,7 @@
             td #{service.name}
             td #{service.decorate.pretty_variety}
             td #{service.man_hours}
-            td #{service.price}
+            td #{format_value service.price, :money}
             td #{format_value service.pending?, :boolean}
             td.text-right
               => link_to 'Show', service_path(service)

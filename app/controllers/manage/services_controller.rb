@@ -37,7 +37,7 @@ class Manage::ServicesController < ApplicationController
       ServiceMailer.user_changed_service(current_user, @service).deliver
       redirect_to(services_path, notice: t('notifications.updated', instance: 'service'))
     elsif @service.save
-      redirect_to services_path
+      redirect_to(services_path, notice: t('notifications.updated', instance: 'service'))
     else
       render action: :edit
     end
