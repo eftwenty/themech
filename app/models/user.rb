@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Constants
+
   ROLES = %w(Worker Calls Finance HR Admin)
   ROLES_WITHOUT_ADMIN = %w(Worker Calls Finance HR)
 
@@ -22,6 +24,8 @@ class User < ActiveRecord::Base
 
   ### Validations
 
+  validates_format_of :first_name, with: ALPHA_REGEX, allow_blank: true
+  validates_format_of :last_name, with: ALPHA_REGEX, allow_blank: true
   validates_format_of :email, with: Email::EMAIL_REGEX
   validates_uniqueness_of :email
   validates_presence_of :work_variety_list, if: -> obj { obj.role_list.include? 'Worker' }
